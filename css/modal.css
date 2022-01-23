@@ -18,6 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
+  min-width: 280px;
   margin: 0 auto;
 }
 
@@ -46,7 +47,7 @@ img {
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px;
+  /* margin: 5px; */
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -101,10 +102,9 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 }
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -172,7 +172,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 1% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -196,6 +196,7 @@ label {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+  margin-top: 11px;
 }
 input {
   padding: 8px;
@@ -209,6 +210,9 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+.formData {
+  text-align: left;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -298,6 +302,14 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+#acceptation-conditions {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.checkbox-icon,
+#birthdate {
+  cursor: pointer;
+}
 .close {
   position: absolute;
   right: 15px;
@@ -335,6 +347,31 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/* Responsive for topbar and modal content under 341px */
+@media screen and (max-width: 341px) {
+  .topnav a.icon {
+    float: left;
+  }
+  .topnav.responsive .icon {
+    margin-top: 51px;
+    left: 0;
+    right: inherit;
+  }
+  .topnav.responsive a {
+    text-align: right;
+  }
+  .main-navbar {
+    width: 100%;
+  }
+  .topnav.responsive .icon:hover {
+    background: inherit;
+  }
+  .content {
+    margin: 0 auto;
+  }
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -405,30 +442,32 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin-top: 11px;
+  margin-bottom: 11px;
 }
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 504px auto;
+  grid-template-rows: repeat (4, auto);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
-}
-.hero-content {
-  padding: 51px 67px;
-  grid-column: span 4;
   background: #232323;
   color: #fff;
+}
+.hero-content {
+  grid-column: 1;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  grid-row: 2 / span 3;
+  padding-bottom: 163px;
 }
 .hero-content::after {
   content: "";
   width: 100%;
   height: 100%;
-  background: #232323;
   position: absolute;
   right: -80px;
   top: 0;
@@ -440,13 +479,20 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  position: relative;
+  z-index: 1;
+  padding: 51px 67px 0px 67px;
+  text-align: left;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
+  padding: 0px 67px;
 }
 .btn-signup {
   outline: none;
@@ -455,15 +501,18 @@ input[data-error]::after {
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
+  margin-left: 67px;
 }
 .hero-img {
-  grid-column: span 8;
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 4;
 }
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -484,6 +533,8 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    background: inherit;
+    color: #000;
   }
   .hero-content {
     background: #fff;
@@ -499,10 +550,13 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    padding: 20px;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    padding: 0px;
+    margin-top: 15px;
   }
   .hero-img img {
     border-radius: 10px;
