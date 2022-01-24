@@ -56,7 +56,7 @@ img {
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 .topnav a.active {
