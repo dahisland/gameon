@@ -385,6 +385,13 @@ input[data-error]::after {
   .content {
     margin: 0 auto;
   }
+  .header-logo {
+    float: inherit;
+    text-align: center;
+  }
+  .header-logo img {
+    padding-right: 0.5rem;
+  }
 }
 
 /* custom select styles */
