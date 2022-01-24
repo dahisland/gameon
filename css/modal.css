@@ -110,6 +110,9 @@ img {
     display: block;
     /* margin-top: -15px; */
   }
+  .topnav.responsive .icon {
+    color: #ff0000;
+  }
 }
 main {
   font-size: 130%;
@@ -369,6 +372,7 @@ input[data-error]::after {
     margin-top: 51px;
     left: 0;
     right: inherit;
+    color: #fff;
   }
   .topnav.responsive a {
     text-align: right;
