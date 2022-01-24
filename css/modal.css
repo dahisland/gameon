@@ -362,7 +362,6 @@ input[data-error]::after {
 .btn-signup:hover {
   background: #3876ac;
 }
-
 /* Responsive for topbar and modal content under 341px */
 @media screen and (max-width: 341px) {
   .topnav a.icon {
@@ -589,6 +588,36 @@ footer {
   }
 }
 
+/* CSS for HTML content added in <div class="modal-body" after form validated */
+.btn-close {
+  outline: none;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1.3rem;
+  padding: 12px 63px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  text-transform: capitalize;
+}
+.btn-close:hover {
+  background: #3876ac;
+}
+.txt-thanks {
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0.5vw;
+  height: 700px;
+  color: #fff;
+  text-align: center;
+  padding-top: 300px;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/* Animation for modal opening  */
 @keyframes modalopen {
   from {
     opacity: 0;
