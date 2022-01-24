@@ -62,7 +62,8 @@ img {
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 12px;
+  text-decoration: underline;
 }
 
 .topnav .icon {
@@ -76,6 +77,10 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: #ff0000;
+  }
+  .topnav a.icon:hover {
+    color: #fff;
   }
 }
 
@@ -87,6 +92,7 @@ img {
     position: absolute;
     right: 0;
     top: 0;
+    color: #fff;
   }
   .topnav.responsive a {
     float: none;
@@ -183,6 +189,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  text-align: left;
 }
 
 .modal-body {
@@ -346,6 +353,11 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-submit:hover,
+.btn-signup:hover {
+  background: #3876ac;
 }
 
 /* Responsive for topbar and modal content under 341px */
