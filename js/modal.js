@@ -7,7 +7,8 @@ const form = document.querySelector("form"); // Const for form
 const modalBody = document.querySelector(".modal-body"); // Const for form content
 const checkboxNewsletter = document.getElementById("checkbox2"); // Const for checkbox non required newsletter
 const errorData = document.querySelectorAll(".error-data"); // Const for class attributed to container text errors on validation form
-const textThanks = document.querySelector(".text-thanks");
+const textThanks = document.querySelector(".text-thanks"); // Const for container <div> with message thanks after a validation form succeed
+
 // Variables for each element contained in Nodelist formData
 let errorDataFirstName = errorData[0];
 let errorDataLastName = errorData[1];
