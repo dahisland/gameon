@@ -1,12 +1,3 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground"); // Const for modal background
 const modalBtn = document.querySelectorAll(".modal-btn"); // Const for button lauch modal
@@ -27,6 +18,15 @@ let errorDataLocalisation = errorData[5];
 let errorDataConditions = errorData[6];
 
 //------------------------------------------------- STYLE CSS ADDED WITH JS
+// Add class responsive for responsive design topnav
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 // Add a class for Nodelist formData containing "conditions d'utilisations"
 let formDataConditions = formData[6];
 formDataConditions.classList.add("margin-conditions");
@@ -59,10 +59,10 @@ function validateLocalisation() {
     location6.checked == false
   ) {
     errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
-    validLocalisation = false;
+    return false;
   } else {
     errorDataLocalisation.textContent = "";
-    validLocalisation = true;
+    return true;
   }
 }
 // Function for validation input type checkbox : Accept CGU
@@ -70,10 +70,10 @@ function validateConditions() {
   if (checkbox1.checked == false) {
     errorDataConditions.textContent =
       "* Veuillez accepter les conditions d'utilisation";
-    validConditions = false;
+    return false;
   } else {
     errorDataConditions.textContent = "";
-    validConditions = true;
+    return true;
   }
 }
 
@@ -89,7 +89,7 @@ function validate(event) {
   validateConditions();
 
   // Validation form
-  if (validLocalisation == true && validConditions == true) {
+  if (validateLocalisation() && validateConditions()) {
     form.style.display = "none"; // form is hidden to display new content
     // Insert content in HTMl to display a message of thanks
     modalBody.innerHTML =
@@ -98,10 +98,11 @@ function validate(event) {
     const buttonClose = document.querySelectorAll(".btn-close"); // const for button close for "thanks" message
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
-        closeModal();
-        window.location.reload();
+        closeModal(); // Close modal
+        window.location.reload(); // Reload page to reset form if user want to do a new subscribe
       })
     );
+    return true;
   } else {
     return false;
   }
