@@ -7,7 +7,7 @@ const form = document.querySelector("form"); // Const for form
 const modalBody = document.querySelector(".modal-body"); // Const for form content
 const checkboxNewsletter = document.getElementById("checkbox2"); // Const for checkbox non required newsletter
 const errorData = document.querySelectorAll(".error-data"); // Const for class attributed to container text errors on validation form
-
+const textThanks = document.querySelector(".text-thanks");
 // Variables for each element contained in Nodelist formData
 let errorDataFirstName = errorData[0];
 let errorDataLastName = errorData[1];
@@ -35,6 +35,18 @@ formDataConditions.classList.add("margin-conditions");
 // Function called to launch modal form by clicking on <button class="modal-btn">
 function launchModal() {
   modalbg.style.display = "block";
+  // function used to reset form if a precedent form has been submitted
+  function resetForm() {
+    form.reset();
+  }
+  // call function reset
+  resetForm();
+  // reset messages error
+  errorDataLocalisation.textContent = "";
+  errorDataConditions.textContent = "";
+  // Style used to display form & hide thanks message if a precedent form has been submitted
+  form.style.display = "block";
+  textThanks.style.display = "none";
 }
 // Launch modal with event : by clicking on <button class="modal-btn">
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -46,6 +58,7 @@ function closeModal() {
 }
 // Close modal with event : by clicking on <span class="close">
 spanClose.forEach((span) => span.addEventListener("click", closeModal));
+// call function reset
 
 //-------------------------------- FUNCTIONS FOR VALIDATION ELEMENTS IN FORM
 // Function for validation input type radio : select localisation
@@ -91,15 +104,16 @@ function validate(event) {
   // Validation form
   if (validateLocalisation() && validateConditions()) {
     form.style.display = "none"; // form is hidden to display new content
+    textThanks.style.display = "block";
     // Insert content in HTMl to display a message of thanks
-    modalBody.innerHTML =
+    textThanks.innerHTML =
       '<p class="txt-thanks">Merci pour votre inscription<p><button class="btn-close">Fermer</button>';
     // Close modal with event : by clicking on <button class="btn-close">
     const buttonClose = document.querySelectorAll(".btn-close"); // const for button close for "thanks" message
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
         closeModal(); // Close modal
-        window.location.reload(); // Reload page to reset form if user want to do a new subscribe
+        //window.location.reload(); // Reload page to reset form if user want to do a new subscribe - not necessary
       })
     );
     return true;
