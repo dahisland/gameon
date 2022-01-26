@@ -37,7 +37,6 @@ spanClose.forEach((span) => span.addEventListener("click", closeModal));
 // Function called to launch modal form by clicking on <button class="modal-btn">
 function launchModal() {
   modalbg.style.display = "block";
-  form.style.display = "block";
 }
 
 // Function called to close modal by clicking on <span class="close">
@@ -88,6 +87,7 @@ function validate(event) {
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
         closeModal();
+        window.location.reload();
       })
     );
   }
