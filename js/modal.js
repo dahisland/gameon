@@ -14,6 +14,19 @@ const formData = document.querySelectorAll(".formData"); // Const for modal data
 const spanClose = document.querySelectorAll(".close"); // Const for span close modal
 const form = document.querySelector("form"); // Const for form
 const modalBody = document.querySelector(".modal-body"); // Const for form content
+const checkboxNewsletter = document.getElementById("checkbox2"); // Const for checkbox non required newsletter
+
+// Variables for each element contained in Nodelist formData
+let formDataFirstName = formData[0];
+let formDataLastName = formData[1];
+let formDataEmail = formData[2];
+let formDataBirthdate = formData[3];
+let formDataQuantityContest = formData[4];
+let formDataLocationContest = formData[5];
+let formDataConditions = formData[6];
+
+// Add a class for Nodelist formData containing "conditions d'utilisations"
+formDataConditions.classList.add("margin-conditions");
 
 // Launch modal with event : by clicking on <button class="modal-btn">
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -26,18 +39,46 @@ function launchModal() {
   modalbg.style.display = "block";
   form.style.display = "block";
 }
+
 // Function called to close modal by clicking on <span class="close">
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// Function for displaying error message data
+let errorData = document.createElement("div");
+function errorMessage(message, formDataNodeList) {
+  errorData.innerHTML = message;
+  formDataNodeList.appendChild(errorData);
+  errorData.setAttribute("class", "error-data");
+}
+
 // Function validate form onsubmit
+
 function validate(event) {
   // if all conditions are respected
-  if (checkbox1.checked == false) {
-    event.preventDefault(); // Prevent defalut reloading page after submit
-    alert("Vous devez accepter les conditions d'utilisation");
+  event.preventDefault(); // Prevent default reloading page after submit
+  if (
+    location1.checked == false &&
+    location2.checked == false &&
+    location3.checked == false &&
+    location4.checked == false &&
+    location5.checked == false &&
+    location6.checked == false
+  ) {
+    console.log("erreur location contest");
+    errorMessage(
+      "* Veuillez cocher au moins une case",
+      formDataLocationContest
+    );
+  } else if (checkbox1.checked == false) {
+    console.log("erreur conditions utilisations");
+    errorMessage(
+      "* Veuillez accepter les conditions d'utilisation",
+      formDataConditions
+    );
+    formDataConditions.insertBefore(errorData, checkboxNewsletter);
   } else {
-    event.preventDefault(); // Prevent defalut reloading page after submit
     form.style.display = "none"; // form is hidden to display new content
     // Insert content in HTMl to display a message of thanks
     modalBody.innerHTML =

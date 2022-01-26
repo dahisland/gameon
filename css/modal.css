@@ -31,6 +31,8 @@ img {
   padding-right: 1rem;
 }
 
+/* HEADER */
+
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -70,6 +72,9 @@ img {
 .topnav .icon {
   display: none;
 }
+
+/* MAIN */
+
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -180,7 +185,20 @@ input {
 .formData {
   text-align: left;
 }
-.formData[data-error]::after {
+/* Class for data-error messages */
+.error-data {
+  font-size: 0.4em;
+  color: #e54858;
+  padding-left: 5px;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 1;
+  transition: 0.3s;
+}
+/*.formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -198,6 +216,8 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+*/
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -268,7 +288,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-#acceptation-conditions {
+.margin-conditions {
   margin-top: 15px;
   margin-bottom: 20px;
 }
@@ -471,11 +491,17 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+/* FOOTER */
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* MEDIAS QUERIES */
+
 @media screen and (max-width: 800px) {
   .topnav {
     padding-left: 2vw;
@@ -575,8 +601,6 @@ footer {
     margin: 0 auto;
   }
 }
-
-/* Responsive for topbar and modal content under 341px */
 @media screen and (max-width: 341px) {
   .topnav a.icon {
     float: right;
