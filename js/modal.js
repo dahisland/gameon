@@ -15,7 +15,7 @@ const spanClose = document.querySelectorAll(".close"); // Const for span close m
 const form = document.querySelector("form"); // Const for form
 const modalBody = document.querySelector(".modal-body"); // Const for form content
 const checkboxNewsletter = document.getElementById("checkbox2"); // Const for checkbox non required newsletter
-const errorData = document.querySelectorAll(".error-data");
+const errorData = document.querySelectorAll(".error-data"); // Const for class attributed to container text errors on validation form
 
 // Variables for each element contained in Nodelist formData
 let errorDataFirstName = errorData[0];
@@ -26,26 +26,28 @@ let errorDataQuantityContest = errorData[4];
 let errorDataLocalisation = errorData[5];
 let errorDataConditions = errorData[6];
 
+//------------------------------------------------- STYLE CSS ADDED WITH JS
 // Add a class for Nodelist formData containing "conditions d'utilisations"
 let formDataConditions = formData[6];
 formDataConditions.classList.add("margin-conditions");
 
-// Launch modal with event : by clicking on <button class="modal-btn">
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// Close modal with event : by clicking on <span class="close">
-spanClose.forEach((span) => span.addEventListener("click", closeModal));
-
+// ------------------------------------------LAUNCH MODAL WITH LINK "Je m'inscris"
 // Function called to launch modal form by clicking on <button class="modal-btn">
 function launchModal() {
   modalbg.style.display = "block";
 }
+// Launch modal with event : by clicking on <button class="modal-btn">
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// ---------------------------------------------CLOSE MODAL WITH SPAN <X>
 // Function called to close modal by clicking on <span class="close">
 function closeModal() {
   modalbg.style.display = "none";
 }
+// Close modal with event : by clicking on <span class="close">
+spanClose.forEach((span) => span.addEventListener("click", closeModal));
 
+//-------------------------------- FUNCTIONS FOR VALIDATION ELEMENTS IN FORM
 // Function for validation input type radio : select localisation
 function validateLocalisation() {
   if (
@@ -75,6 +77,7 @@ function validateConditions() {
   }
 }
 
+//-----------------------------------------------VALIDATION FORM ON SUBMIT
 // Function validate form onsubmit
 
 function validate(event) {
