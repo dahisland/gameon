@@ -15,17 +15,19 @@ const spanClose = document.querySelectorAll(".close"); // Const for span close m
 const form = document.querySelector("form"); // Const for form
 const modalBody = document.querySelector(".modal-body"); // Const for form content
 const checkboxNewsletter = document.getElementById("checkbox2"); // Const for checkbox non required newsletter
+const errorData = document.querySelectorAll(".error-data");
 
 // Variables for each element contained in Nodelist formData
-let formDataFirstName = formData[0];
-let formDataLastName = formData[1];
-let formDataEmail = formData[2];
-let formDataBirthdate = formData[3];
-let formDataQuantityContest = formData[4];
-let formDataLocationContest = formData[5];
-let formDataConditions = formData[6];
+let errorDataFirstName = errorData[0];
+let errorDataLastName = errorData[1];
+let errorDataEmail = errorData[2];
+let errorDataBirthdate = errorData[3];
+let errorDataQuantityContest = errorData[4];
+let errorDataLocalisation = errorData[5];
+let errorDataConditions = errorData[6];
 
 // Add a class for Nodelist formData containing "conditions d'utilisations"
+let formDataConditions = formData[6];
 formDataConditions.classList.add("margin-conditions");
 
 // Launch modal with event : by clicking on <button class="modal-btn">
@@ -44,19 +46,8 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Function for displaying error message data
-let errorData = document.createElement("div");
-function errorMessage(message, formDataNodeList) {
-  errorData.innerHTML = message;
-  formDataNodeList.appendChild(errorData);
-  errorData.setAttribute("class", "error-data");
-}
-
-// Function validate form onsubmit
-
-function validate(event) {
-  // if all conditions are respected
-  event.preventDefault(); // Prevent default reloading page after submit
+// Function for validation input type radio : select localisation
+function validateLocalisation() {
   if (
     location1.checked == false &&
     location2.checked == false &&
@@ -65,19 +56,37 @@ function validate(event) {
     location5.checked == false &&
     location6.checked == false
   ) {
-    console.log("erreur location contest");
-    errorMessage(
-      "* Veuillez cocher au moins une case",
-      formDataLocationContest
-    );
-  } else if (checkbox1.checked == false) {
-    console.log("erreur conditions utilisations");
-    errorMessage(
-      "* Veuillez accepter les conditions d'utilisation",
-      formDataConditions
-    );
-    formDataConditions.insertBefore(errorData, checkboxNewsletter);
+    errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
+    validLocalisation = false;
   } else {
+    errorDataLocalisation.textContent = "";
+    validLocalisation = true;
+  }
+}
+// Function for validation input type checkbox : Accept CGU
+function validateConditions() {
+  if (checkbox1.checked == false) {
+    errorDataConditions.textContent =
+      "* Veuillez accepter les conditions d'utilisation";
+    validConditions = false;
+  } else {
+    errorDataConditions.textContent = "";
+    validConditions = true;
+  }
+}
+
+// Function validate form onsubmit
+
+function validate(event) {
+  // if all conditions are respected
+  event.preventDefault(); // Prevent default reloading page after submit
+
+  // launch functions to validatie each element in form
+  validateLocalisation();
+  validateConditions();
+
+  // Validation form
+  if (validLocalisation == true && validConditions == true) {
     form.style.display = "none"; // form is hidden to display new content
     // Insert content in HTMl to display a message of thanks
     modalBody.innerHTML =
@@ -90,5 +99,7 @@ function validate(event) {
         window.location.reload();
       })
     );
+  } else {
+    return false;
   }
 }

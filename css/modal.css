@@ -166,7 +166,7 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 6px;
   margin-top: 11px;
 }
 input {
@@ -187,16 +187,15 @@ input {
 }
 /* Class for data-error messages */
 .error-data {
-  font-size: 0.4em;
+  font-size: 0.45em;
   color: #e54858;
-  padding-left: 5px;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  padding: 5px;
   text-align: left;
-  line-height: 0.3;
   opacity: 1;
   transition: 0.3s;
+  height: 14px;
+  line-height: 5px;
+  margin-top: 5px;
 }
 /*.formData[data-error]::after {
   content: attr(data-error);
