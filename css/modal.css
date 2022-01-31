@@ -39,6 +39,11 @@ img {
 .header-logo {
   float: left;
 }
+.header-logo img {
+  padding-left: 0.5rem;
+  object-fit: cover;
+  max-width: 100%;
+}
 .main-navbar {
   float: right;
 }
@@ -516,12 +521,38 @@ footer {
 /* MEDIAS QUERIES */
 
 @media screen and (max-width: 800px) {
+  .header-logo img {
+    padding-left: 0rem;
+  }
   .topnav {
     padding-left: 2vw;
     padding-right: 2vw;
   }
   .topnav a {
     font-size: 18px;
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: #ff0000;
+  }
+  .topnav a.icon:hover {
+    color: #fff;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
   }
   .hero-section {
     display: block;
@@ -566,33 +597,6 @@ footer {
   }
   .main-navbar {
     margin-right: -2vw;
-  }
-}
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    color: #ff0000;
-  }
-  .topnav a.icon:hover {
-    color: #fff;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: #fff;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
   }
 }
 @media screen and (max-width: 540px) {
@@ -640,7 +644,7 @@ footer {
     text-align: center;
   }
   .header-logo img {
-    padding-right: 0.5rem;
+    padding-left: 0.8rem;
   }
   .hero-headline {
     font-size: 3rem;
