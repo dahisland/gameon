@@ -165,13 +165,17 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 6px;
-  margin-top: 11px;
+  margin-top: 20px;
 }
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+  cursor: pointer;
+}
+input:focus {
+  cursor: text;
+  background: lightsteelblue;
 }
 .text-control {
   margin: 0;
@@ -184,17 +188,22 @@ input {
 .formData {
   text-align: left;
 }
+.formData--flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 /* Class for data-error messages */
 .error-data {
   font-size: 0.45em;
   color: #e54858;
-  padding: 5px;
+  padding: 5px 0px;
   text-align: left;
   opacity: 1;
   transition: 0.3s;
   height: 14px;
   line-height: 5px;
-  margin-top: 5px;
+  margin-bottom: 5px;
 }
 /*.formData[data-error]::after {
   content: attr(data-error);
@@ -225,9 +234,17 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 6px;
   font-size: 12px;
+  line-height: 20px;
   font-weight: normal;
+  cursor: pointer;
+}
+.checkbox-label {
+  margin-right: 20px;
+  margin-bottom: 9px;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
@@ -289,10 +306,6 @@ input[data-error]::after {
 .margin-conditions {
   margin-top: 15px;
   margin-bottom: 20px;
-}
-.checkbox-icon,
-#birthdate {
-  cursor: pointer;
 }
 .close {
   position: absolute;
@@ -407,8 +420,10 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
-  margin-top: 11px;
-  margin-bottom: 11px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 0vw;
+  cursor: default;
 }
 .hero-section {
   min-height: 63vh;
