@@ -69,6 +69,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  placeholder="Ex: Marie-Hélène"
                 /><br />
               </div>
               <div class="formData">
@@ -80,6 +81,7 @@
                   id="last"
                   name="last"
                   minlength="2"
+                  placeholder="Ex: Dupont"
                 /><br />
               </div>
               <div class="formData">
@@ -90,6 +92,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="Ex: dupont_01@gmail.com"
                 /><br />
               </div>
               <div class="formData">
@@ -115,12 +118,14 @@
                   name="quantity"
                   min="0"
                   max="99"
+                  placeholder="Nombre entre 0 et 99"
                 />
                 <br />
               </div>
               <p class="text-label">
                 À quel tournoi souhaitez-vous participer cette année ?
               </p>
+              <div class="error-data"></div>
               <div class="formData formData--flexbox">
                 <input
                   class="checkbox-input"
@@ -190,16 +195,15 @@
                 >
                 <br />
               </div>
-              <div class="error-data"></div>
 
               <div class="formData">
+                <div class="error-data"></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox1" />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et j'accepte les conditions d'utilisation.
                 </label>
                 <br />
-                <div class="error-data"></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

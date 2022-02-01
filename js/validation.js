@@ -1,10 +1,13 @@
 //-------------------------------- FUNCTIONS FOR VALIDATION ELEMENTS IN FORM
-// Function for validation First name : Write at least 2 caracters
+// Function for validation First name : Write at least 2 caracters, exclude special caracters & numbers
 function validateFirstName() {
-  if (inputFirstName.value.length < 2) {
+  if (
+    (inputFirstName.value.length < 2) |
+    !inputFirstName.value.match(regexNames)
+  ) {
     inputFirstName.style.border = "2.8px solid #ff0000";
     errorDataFirstName.textContent =
-      "* Veuillez indiquer au moins 2 caractères";
+      "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
     return false;
   } else {
     errorDataFirstName.textContent = "";
@@ -12,15 +15,63 @@ function validateFirstName() {
     return true;
   }
 }
-// Function for validation Last name : Write at least 2 caracters
+// Function for validation Last name : Write at least 2 caracters, exclude special caracters & numbers
 function validateLastName() {
-  if (inputLastName.value.length < 2) {
+  if (
+    (inputLastName.value.length < 2) |
+    !inputLastName.value.match(regexNames)
+  ) {
     inputLastName.style.border = "2.8px solid #ff0000";
-    errorDataLastName.textContent = "* Veuillez indiquer au moins 2 caractères";
+    errorDataLastName.textContent =
+      "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
     return false;
   } else {
     errorDataLastName.textContent = "";
     inputLastName.style.border = "0.8px solid #ccc";
+    return true;
+  }
+}
+// Function for validation Email on format x@xxx.xx
+function validateEmail() {
+  if ((inputEmail.value.length < 6) | !inputEmail.value.match(regexEmail)) {
+    inputEmail.style.border = "2.8px solid #ff0000";
+    errorDataEmail.textContent = "* Veuillez entrer une adresse mail valide";
+    return false;
+  } else {
+    errorDataEmail.textContent = "";
+    inputEmail.style.border = "0.8px solid #ccc";
+    return true;
+  }
+}
+// Function for validation Birthdate between 01/01/1900 & 31/12/2019
+function validateBirthdate() {
+  if (
+    (inputBirthdate.value.length < 8) |
+    !inputBirthdate.value.match(regexBirthdate)
+  ) {
+    inputBirthdate.style.border = "2.8px solid #ff0000";
+    errorDataBirthdate.textContent =
+      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019";
+    return false;
+  } else {
+    errorDataBirthdate.textContent = "";
+    inputBirthdate.style.border = "0.8px solid #ccc";
+    return true;
+  }
+}
+// Function for validation Quantity Contest (number between 1 & 99)
+function validateQuantityContest() {
+  if (
+    (inputQuantityContest.value.length < 1) |
+    !inputQuantityContest.value.match(regexQuantityContest)
+  ) {
+    inputQuantityContest.style.border = "2.8px solid #ff0000";
+    errorDataQuantityContest.textContent =
+      "* Veuillez entrer un nombre entre 1 et 99";
+    return false;
+  } else {
+    errorDataQuantityContest.textContent = "";
+    inputQuantityContest.style.border = "0.8px solid #ccc";
     return true;
   }
 }
@@ -62,6 +113,9 @@ function validate(event) {
   // launch functions to validate element checkboxes in form
   validateFirstName();
   validateLastName();
+  validateEmail();
+  validateBirthdate();
+  validateQuantityContest();
   validateLocalisation();
   validateConditions();
 
@@ -69,6 +123,12 @@ function validate(event) {
   if (!validateFirstName()) {
     return false;
   } else if (!validateLastName()) {
+    return false;
+  } else if (!validateEmail()) {
+    return false;
+  } else if (!validateBirthdate()) {
+    return false;
+  } else if (!validateQuantityContest()) {
     return false;
   } else if (!validateLocalisation()) {
     return false;

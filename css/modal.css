@@ -180,7 +180,13 @@ input {
 }
 input:focus {
   cursor: text;
-  background: lightsteelblue;
+  background: #dfe0e1;
+}
+input::placeholder {
+  font-family: var(--font-default);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #333;
 }
 .text-control {
   margin: 0;
@@ -200,14 +206,13 @@ input:focus {
 }
 /* Class for data-error messages */
 .error-data {
-  font-size: 0.45em;
+  font-size: 0.5em;
   color: #e54858;
   padding: 5px 0px;
   text-align: left;
   opacity: 1;
   transition: 0.3s;
-  height: 14px;
-  line-height: 5px;
+  line-height: 11px;
   margin-bottom: 5px;
 }
 /*.formData[data-error]::after {
@@ -426,7 +431,6 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
   margin-top: 20px;
-  margin-bottom: 20px;
   padding-bottom: 0vw;
   cursor: default;
 }

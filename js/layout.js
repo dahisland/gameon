@@ -11,7 +11,3 @@ function editNav() {
 // Add a class for Nodelist formData containing "conditions d'utilisations"
 let formDataConditions = formData[6];
 formDataConditions.classList.add("margin-conditions");
-
-// Add attributes for inputs in form
-inputFirstName.setAttribute("min", "2"); // Add a minimum caracters requirment for inputs firstname and lastname
-inputLastName.setAttribute("min", "2");

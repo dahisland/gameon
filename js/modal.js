@@ -12,11 +12,17 @@ function launchModal() {
   // Reset messages error
   errorDataFirstName.textContent = "";
   errorDataLastName.textContent = "";
+  errorDataEmail.textContent = "";
+  errorDataBirthdate.textContent = "";
+  errorDataQuantityContest.textContent = "";
   errorDataLocalisation.textContent = "";
   errorDataConditions.textContent = "";
   // Reset red borders for inputs
   inputFirstName.style.border = "0.8px solid #ccc";
   inputLastName.style.border = "0.8px solid #ccc";
+  inputEmail.style.border = "0.8px solid #ccc";
+  inputBirthdate.style.border = "0.8px solid #ccc";
+  inputQuantityContest.style.border = "0.8px solid #ccc";
   // Style used to display form & hide thanks message if a precedent form has been submitted
   form.style.display = "block";
   textThanks.style.display = "none";

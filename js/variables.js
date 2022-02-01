@@ -12,7 +12,7 @@ const input = document.querySelectorAll("input"); // Const for all <input> eleme
 // Variables for each element contained in the Nodelist input
 const inputFirstName = input[0];
 const inputLastName = input[1];
-const inputDataEmail = input[2];
+const inputEmail = input[2];
 const inputBirthdate = input[3];
 const inputQuantityContest = input[4];
 
