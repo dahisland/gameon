@@ -19,13 +19,14 @@ function eventInputs(
 ) {
   inputReferenceNodelist.addEventListener(typeEvent, (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     // display an error message & change border color when the number of caracters isn't correct
     if ((e.target.value.length < lengthValue) | !e.target.value.match(regex)) {
       errReferenceData.textContent = textError;
+      errReferenceData.style.color = "#ff0000";
       e.target.style.border = "2.8px solid #ff0000";
     } else {
-      errReferenceData.textContent = "";
+      errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
+      errReferenceData.style.color = "green";
       e.target.style.border = styleBorderElse;
     }
   });

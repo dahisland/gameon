@@ -8,9 +8,12 @@ function validateFirstName() {
     inputFirstName.style.border = "2.8px solid #ff0000";
     errorDataFirstName.textContent =
       "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
+    errorDataFirstName.style.color = "#ff0000";
+
     return false;
   } else {
-    errorDataFirstName.textContent = "";
+    errorDataFirstName.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataFirstName.style.color = "green";
     inputFirstName.style.border = "0.8px solid #ccc";
     return true;
   }
@@ -24,9 +27,11 @@ function validateLastName() {
     inputLastName.style.border = "2.8px solid #ff0000";
     errorDataLastName.textContent =
       "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
+    errorDataLastName.style.color = "#ff0000";
     return false;
   } else {
-    errorDataLastName.textContent = "";
+    errorDataLastName.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataLastName.style.color = "green";
     inputLastName.style.border = "0.8px solid #ccc";
     return true;
   }
@@ -36,9 +41,11 @@ function validateEmail() {
   if ((inputEmail.value.length < 6) | !inputEmail.value.match(regexEmail)) {
     inputEmail.style.border = "2.8px solid #ff0000";
     errorDataEmail.textContent = "* Veuillez entrer une adresse mail valide";
+    errorDataEmail.style.color = "#ff0000";
     return false;
   } else {
-    errorDataEmail.textContent = "";
+    errorDataEmail.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataEmail.style.color = "green";
     inputEmail.style.border = "0.8px solid #ccc";
     return true;
   }
@@ -52,9 +59,11 @@ function validateBirthdate() {
     inputBirthdate.style.border = "2.8px solid #ff0000";
     errorDataBirthdate.textContent =
       "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019";
+    errorDataBirthdate.style.color = "#ff0000";
     return false;
   } else {
-    errorDataBirthdate.textContent = "";
+    errorDataBirthdate.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataBirthdate.style.color = "green";
     inputBirthdate.style.border = "0.8px solid #ccc";
     return true;
   }
@@ -68,9 +77,11 @@ function validateQuantityContest() {
     inputQuantityContest.style.border = "2.8px solid #ff0000";
     errorDataQuantityContest.textContent =
       "* Veuillez entrer un nombre entre 1 et 99";
+    errorDataQuantityContest.style.color = "#ff0000";
     return false;
   } else {
-    errorDataQuantityContest.textContent = "";
+    errorDataQuantityContest.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataQuantityContest.style.color = "green";
     inputQuantityContest.style.border = "0.8px solid #ccc";
     return true;
   }
@@ -86,9 +97,11 @@ function validateLocalisation() {
     location6.checked == false
   ) {
     errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
+    errorDataLocalisation.style.color = "#ff0000";
     return false;
   } else {
-    errorDataLocalisation.textContent = "";
+    errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataLocalisation.style.color = "green";
     return true;
   }
 }
@@ -97,9 +110,11 @@ function validateConditions() {
   if (checkbox1.checked == false) {
     errorDataConditions.textContent =
       "* Veuillez accepter les conditions d'utilisation";
+    errorDataConditions.style.color = "#ff0000";
     return false;
   } else {
-    errorDataConditions.textContent = "";
+    errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataConditions.style.color = "green";
     return true;
   }
 }
