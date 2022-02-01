@@ -206,14 +206,15 @@ input::placeholder {
 }
 /* Class for data-error messages */
 .error-data {
-  font-size: 0.5em;
+  font-size: 0.49em;
   font-weight: 400;
   color: #e54858;
   padding: 5px 0px;
   text-align: left;
   opacity: 1;
-  line-height: 11px;
+  line-height: 12px;
   margin-bottom: 5px;
+  min-height: 22px;
 }
 /*.formData[data-error]::after {
   content: attr(data-error);
