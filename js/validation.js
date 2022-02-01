@@ -1,92 +1,30 @@
 //-------------------------------- FUNCTIONS FOR VALIDATION ELEMENTS IN FORM
-// Function for validation First name : Write at least 2 caracters, exclude special caracters & numbers
-function validateFirstName() {
-  if (
-    (inputFirstName.value.length < 2) |
-    !inputFirstName.value.match(regexNames)
-  ) {
-    inputFirstName.style.border = "2.8px solid #ff0000";
-    errorDataFirstName.textContent =
-      "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
-    errorDataFirstName.style.color = "#ff0000";
 
-    return false;
-  } else {
-    errorDataFirstName.innerHTML = '<i class="fa fa-check"></i>';
-    errorDataFirstName.style.color = "green";
-    inputFirstName.style.border = "0.8px solid #ccc";
-    return true;
-  }
-}
-// Function for validation Last name : Write at least 2 caracters, exclude special caracters & numbers
-function validateLastName() {
+// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/BIRTHDATE/QUANTITY CONTEST - on submit
+function validateInputs(
+  inputReferenceNodelist,
+  lengthValue,
+  regex,
+  errReferenceData,
+  textError
+) {
   if (
-    (inputLastName.value.length < 2) |
-    !inputLastName.value.match(regexNames)
+    (inputReferenceNodelist.value.length < lengthValue) |
+    !inputReferenceNodelist.value.match(regex)
   ) {
-    inputLastName.style.border = "2.8px solid #ff0000";
-    errorDataLastName.textContent =
-      "* 2 caractères minimum, sans chiffre ni caractères spéciaux";
-    errorDataLastName.style.color = "#ff0000";
+    inputReferenceNodelist.style.border = "2.8px solid #ff0000";
+    errReferenceData.style.color = "#ff0000";
+    errReferenceData.textContent = textError;
     return false;
   } else {
-    errorDataLastName.innerHTML = '<i class="fa fa-check"></i>';
-    errorDataLastName.style.color = "green";
-    inputLastName.style.border = "0.8px solid #ccc";
+    errReferenceData.style.color = "green";
+    errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
+    inputReferenceNodelist.style.border = "0.8px solid #ccc";
     return true;
   }
 }
-// Function for validation Email on format x@xxx.xx
-function validateEmail() {
-  if ((inputEmail.value.length < 6) | !inputEmail.value.match(regexEmail)) {
-    inputEmail.style.border = "2.8px solid #ff0000";
-    errorDataEmail.textContent = "* Veuillez entrer une adresse mail valide";
-    errorDataEmail.style.color = "#ff0000";
-    return false;
-  } else {
-    errorDataEmail.innerHTML = '<i class="fa fa-check"></i>';
-    errorDataEmail.style.color = "green";
-    inputEmail.style.border = "0.8px solid #ccc";
-    return true;
-  }
-}
-// Function for validation Birthdate between 01/01/1900 & 31/12/2019
-function validateBirthdate() {
-  if (
-    (inputBirthdate.value.length < 8) |
-    !inputBirthdate.value.match(regexBirthdate)
-  ) {
-    inputBirthdate.style.border = "2.8px solid #ff0000";
-    errorDataBirthdate.textContent =
-      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019";
-    errorDataBirthdate.style.color = "#ff0000";
-    return false;
-  } else {
-    errorDataBirthdate.innerHTML = '<i class="fa fa-check"></i>';
-    errorDataBirthdate.style.color = "green";
-    inputBirthdate.style.border = "0.8px solid #ccc";
-    return true;
-  }
-}
-// Function for validation Quantity Contest (number between 1 & 99)
-function validateQuantityContest() {
-  if (
-    (inputQuantityContest.value.length < 1) |
-    !inputQuantityContest.value.match(regexQuantityContest)
-  ) {
-    inputQuantityContest.style.border = "2.8px solid #ff0000";
-    errorDataQuantityContest.textContent =
-      "* Veuillez entrer un nombre entre 1 et 99";
-    errorDataQuantityContest.style.color = "#ff0000";
-    return false;
-  } else {
-    errorDataQuantityContest.innerHTML = '<i class="fa fa-check"></i>';
-    errorDataQuantityContest.style.color = "green";
-    inputQuantityContest.style.border = "0.8px solid #ccc";
-    return true;
-  }
-}
-// Function for validation input type radio : Choose a localisation
+
+// Function for validation input type radio : Choose a LOCALISATION CONTEST - on submit
 function validateLocalisation() {
   if (
     location1.checked == false &&
@@ -96,71 +34,159 @@ function validateLocalisation() {
     location5.checked == false &&
     location6.checked == false
   ) {
-    errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
     errorDataLocalisation.style.color = "#ff0000";
+    errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
     return false;
   } else {
-    errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
     errorDataLocalisation.style.color = "green";
+    errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
     return true;
   }
 }
-// Function for validation input type checkbox : Accept CGU
+// Function for validation input type checkbox : ACCEPT CONDITIONS - on submit
 function validateConditions() {
   if (checkbox1.checked == false) {
+    errorDataConditions.style.color = "#ff0000";
     errorDataConditions.textContent =
       "* Veuillez accepter les conditions d'utilisation";
-    errorDataConditions.style.color = "#ff0000";
     return false;
   } else {
-    errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
     errorDataConditions.style.color = "green";
+    errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
     return true;
   }
 }
 
 //----------------------------------------------- VALIDATION FORM ON SUBMIT
-// Function validate form onsubmit
 
+// Function validate form onsubmit
 function validate(event) {
   event.preventDefault(); // Prevent default reloading page after submit
 
-  // launch functions to validate element checkboxes in form
-  validateFirstName();
-  validateLastName();
-  validateEmail();
-  validateBirthdate();
-  validateQuantityContest();
+  // Call function for Input FIRST NAME
+  validateInputs(
+    inputFirstName,
+    2,
+    regexNames,
+    errorDataFirstName,
+    "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+  );
+  // Call function for Input LAST NAME
+  validateInputs(
+    inputLastName,
+    2,
+    regexNames,
+    errorDataLastName,
+    "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+  );
+  // Call function for Input EMAIL
+  validateInputs(
+    inputEmail,
+    6,
+    regexEmail,
+    errorDataEmail,
+    "* Veuillez entrer une adresse mail valide"
+  );
+  // Call function for Input BIRTHDATE
+  validateInputs(
+    inputBirthdate,
+    8,
+    regexBirthdate,
+    errorDataBirthdate,
+    "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019"
+  );
+  // Call function for Input QUANTITY CONTEST
+  validateInputs(
+    inputQuantityContest,
+    1,
+    regexQuantityContest,
+    errorDataQuantityContest,
+    "* Veuillez entrer un nombre entre 0 et 99"
+  );
+  // Call function for Input LOCALISATION CONTEST
   validateLocalisation();
+  // Call function for Input ACCEPT CONDITIONS
   validateConditions();
 
-  // Validation form
-  if (!validateFirstName()) {
+  // CONDITIONS FOR SUBMIT ( All functions Inputs must return true)
+  if (
+    // If function for Input FIRST NAME return false
+    !validateInputs(
+      inputFirstName,
+      2,
+      regexNames,
+      errorDataFirstName,
+      "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+    )
+  ) {
     return false;
-  } else if (!validateLastName()) {
+  } else if (
+    // If function for Input LAST NAME return false
+    !validateInputs(
+      inputLastName,
+      2,
+      regexNames,
+      errorDataLastName,
+      "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+    )
+  ) {
     return false;
-  } else if (!validateEmail()) {
+  } else if (
+    // If function for Input EMAIL return false
+    !validateInputs(
+      inputEmail,
+      6,
+      regexEmail,
+      errorDataEmail,
+      "* Veuillez entrer une adresse mail valide"
+    )
+  ) {
     return false;
-  } else if (!validateBirthdate()) {
+  } else if (
+    // If function for Input BIRTHDATE return false
+    !validateInputs(
+      inputBirthdate,
+      8,
+      regexBirthdate,
+      errorDataBirthdate,
+      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019"
+    )
+  ) {
     return false;
-  } else if (!validateQuantityContest()) {
+  } else if (
+    // If function for Input QUANTITY CONTEST return false
+    !validateInputs(
+      inputQuantityContest,
+      1,
+      regexQuantityContest,
+      errorDataQuantityContest,
+      "* Veuillez entrer un nombre entre 0 et 99"
+    )
+  ) {
     return false;
-  } else if (!validateLocalisation()) {
+  } else if (
+    // If function for Input LOCALISATION CONTEST return false
+    !validateLocalisation()
+  ) {
     return false;
-  } else if (!validateConditions()) {
+  } else if (
+    // If function for Input ACCEPT CONDITIONS return false
+    !validateConditions()
+  ) {
     return false;
   } else {
-    form.style.display = "none"; // form is hidden to display new content
+    // Form is valid => form is hidden
+    form.style.display = "none";
+    // Form is valid => a "message thanks" is displayed
     textThanks.style.display = "block";
-    // Insert content in HTMl to display a message of thanks
     textThanks.innerHTML =
       '<p class="txt-thanks">Merci pour votre inscription<p><button class="btn-close">Fermer</button>';
-    // Close modal with event : by clicking on <button class="btn-close">
-    const buttonClose = document.querySelectorAll(".btn-close"); // const for button close for "thanks" message
+    // Form is valid => a close button is displayed to close modal
+    const buttonClose = document.querySelectorAll(".btn-close");
+    // Call function Close modal on click
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
-        closeModal(); // Close modal
-        //window.location.reload(); // Reload page to reset form if user want to do a new subscribe - not necessary
+        closeModal();
       })
     );
     return true;

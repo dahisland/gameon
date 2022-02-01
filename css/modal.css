@@ -207,11 +207,11 @@ input::placeholder {
 /* Class for data-error messages */
 .error-data {
   font-size: 0.5em;
+  font-weight: 400;
   color: #e54858;
   padding: 5px 0px;
   text-align: left;
   opacity: 1;
-  transition: 0.3s;
   line-height: 11px;
   margin-bottom: 5px;
 }
