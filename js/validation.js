@@ -93,7 +93,7 @@ function validate(event) {
     8,
     regexBirthdate,
     errorDataBirthdate,
-    "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019"
+    "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011"
   );
   // Call function for Input QUANTITY CONTEST
   validateInputs(
@@ -149,7 +149,7 @@ function validate(event) {
       8,
       regexBirthdate,
       errorDataBirthdate,
-      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019"
+      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011"
     )
   ) {
     return false;

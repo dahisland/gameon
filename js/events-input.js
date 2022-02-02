@@ -4,7 +4,7 @@ const regexNames =
   /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s-]{2,50}$/g;
 const regexEmail = /^\w{1,}\@\w{1,}\.\w{2,5}$/;
 const regexBirthdate =
-  /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+  /^(19[0-9][0-9]|20[0-1][0-1])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
 
 // Function to apply events "input", "focusin" and "focusout" for inputs FIRSTNAME & LASTNAME
@@ -160,7 +160,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSIN"
@@ -170,7 +170,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSOUT"
@@ -180,7 +180,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "0.8px solid #ccc"
 );
 
