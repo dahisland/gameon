@@ -1,8 +1,8 @@
 //------------------------------------------------------------- INPUT MESSAGES ON FOCUS
 // Variables for REGEX
 const regexNames =
-  /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s- ]{2,50}$/;
-const regexEmail = /^\w*\@\w*\.\w{2,5}$/;
+  /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s-]{2,50}$/g;
+const regexEmail = /^\w{1,}\@\w{1,}\.\w{2,5}$/;
 const regexBirthdate =
   /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 const regexQuantityContest = /^(\d|[0-9][0-9])$/;
@@ -19,6 +19,16 @@ function eventInputs(
 ) {
   inputReferenceNodelist.addEventListener(typeEvent, (e) => {
     e.preventDefault();
+    // Condition to reduce whitspaces for inputs FIRST NAME & LASTNAME or supprim for input EMAIL
+    if (inputReferenceNodelist == inputEmail) {
+      e.target.value = e.target.value.replace(/\s/g, "");
+    } else if (
+      (inputReferenceNodelist == inputFirstName) |
+      (inputReferenceNodelist == inputLastName)
+    ) {
+      e.target.value = e.target.value.replace(/[\s]{2,}/g, " ");
+      e.target.value = e.target.value.replace(/^[\s]/, "");
+    }
     // display an error message & change border color when the number of caracters isn't correct
     if ((e.target.value.length < lengthValue) | !e.target.value.match(regex)) {
       errReferenceData.style.color = "#ff0000";
@@ -32,7 +42,9 @@ function eventInputs(
   });
 }
 
+//--------------------------
 // INPUT FIRSTNAME FOCUSING
+//--------------------------
 // Launch function for FIRSTNAME on event "INPUT"
 // (when user write on input, he will be notified when content is valid or not)
 eventInputs(
@@ -67,7 +79,9 @@ eventInputs(
   "0.8px solid #ccc"
 );
 
+//--------------------------
 // INPUT LASTNAME FOCUSING
+//--------------------------
 // Launch function for LASTNAME on event "INPUT"
 eventInputs(
   inputLastName,
@@ -99,7 +113,9 @@ eventInputs(
   "0.8px solid #ccc"
 );
 
+//--------------------------
 // INPUT EMAIL FOCUSING
+//--------------------------
 // Launch function for EMAIL on event "INPUT"
 eventInputs(
   inputEmail,
@@ -131,7 +147,9 @@ eventInputs(
   "0.8px solid #ccc"
 );
 
+//--------------------------
 // INPUT BIRTHDATE FOCUSING
+//--------------------------
 // Launch function for BIRTHDATE on event "INPUT"
 eventInputs(
   inputBirthdate,
@@ -163,7 +181,9 @@ eventInputs(
   "0.8px solid #ccc"
 );
 
+//--------------------------
 // INPUT NUMBER FOCUSING
+//--------------------------
 // Launch function for QUANTITY CONTEST on event "INPUT"
 eventInputs(
   inputQuantityContest,
