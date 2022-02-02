@@ -160,7 +160,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSIN"
@@ -170,7 +170,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSOUT"
@@ -180,7 +180,7 @@ eventInputs(
   8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2019",
+  "* Veuillez entrer une date entre le 01/01/1900 et le 01/02/2019",
   "0.8px solid #ccc"
 );
 
