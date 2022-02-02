@@ -5,7 +5,7 @@ const regexNames =
 const regexEmail = /^\w{1,}\@\w{1,}\.\w{2,5}$/;
 const regexBirthdate =
   /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
-const regexQuantityContest = /^(\d|[0-9][0-9])$/;
+const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
 
 // Function to apply events "input", "focusin" and "focusout" for inputs FIRSTNAME & LASTNAME
 function eventInputs(
@@ -20,7 +20,10 @@ function eventInputs(
   inputReferenceNodelist.addEventListener(typeEvent, (e) => {
     e.preventDefault();
     // Condition to reduce whitspaces for inputs FIRST NAME & LASTNAME or supprim for input EMAIL
-    if (inputReferenceNodelist == inputEmail) {
+    if (
+      (inputReferenceNodelist == inputEmail) |
+      (inputReferenceNodelist == inputQuantityContest)
+    ) {
       e.target.value = e.target.value.replace(/\s/g, "");
     } else if (
       (inputReferenceNodelist == inputFirstName) |
