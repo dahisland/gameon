@@ -28,7 +28,6 @@ function validateInputBirthdate() {
   // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
   let dataBirthdate = inputBirthdate.valueAsDate;
-
   if (dataBirthdate == null) {
     // When user hasn't filled any values yet (valueAsDate is null)
     errorDataBirthdate.style.color = "#ff0000";
@@ -95,7 +94,6 @@ function validateConditions() {
 // Function validate form onsubmit
 function validate(event) {
   event.preventDefault(); // Prevent default reloading page after submit
-
   // Call function for Input FIRST NAME
   validateInputs(
     inputFirstName,
@@ -121,7 +119,7 @@ function validate(event) {
     "* Veuillez entrer une adresse mail valide"
   );
   // Call function for Input BIRTHDATE
-  validateInputBirthdate();
+  validateInputBirthdate(event);
   // Call function for Input QUANTITY CONTEST
   validateInputs(
     inputQuantityContest,

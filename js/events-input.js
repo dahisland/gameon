@@ -2,7 +2,7 @@
 // Variables for REGEX
 const regexNames =
   /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s-]{2,50}$/g;
-const regexEmail = /^\w{1,}\@\w{1,}\.\w{2,5}$/;
+const regexEmail = /^([\w]{1,}[\@][a-z]{1,}[\.][a-z]{2,5})$/;
 const regexBirthdate =
   /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
