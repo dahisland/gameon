@@ -4,10 +4,11 @@ const regexNames =
   /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s-]{2,50}$/g;
 const regexEmail = /^\w{1,}\@\w{1,}\.\w{2,5}$/;
 const regexBirthdate =
-  /^(19[0-9][0-9]|20[0-1][0-1])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+  /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
 
 // Function to apply events "input", "focusin" and "focusout" for inputs FIRSTNAME & LASTNAME
+
 function eventInputs(
   inputReferenceNodelist, // Variable name for input in Nodlist input
   typeEvent, // Type of event (input, focusin or focusout) - string
@@ -45,6 +46,56 @@ function eventInputs(
   });
 }
 
+// Function for birthdate : valid/invalid input by calculating age of user in terms of today's date
+// Age minimum required at the time of registration : 12 years old
+
+// function to collect today's date (day/month and year)
+today = new Date();
+let dayToday = today.getDate();
+let monthToday = today.getMonth();
+let yearToday = today.getFullYear();
+
+function eventInputsBirthdate(
+  inputReferenceNodelist, // Variable name for input in Nodlist input
+  typeEvent, // Type of event (input, focusin or focusout) - string
+  regex, // Regex
+  errReferenceData, // Variable name for div error-data in Nodelist error-data
+  styleBorderElse // Style to apply - string
+) {
+  inputReferenceNodelist.addEventListener(typeEvent, (e) => {
+    e.preventDefault();
+    // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
+    // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
+    let dataBirthdate = e.target.valueAsDate;
+
+    if (dataBirthdate == null) {
+      // When user hasn't filled any values yet (valueAsDate is null)
+      errReferenceData.style.color = "#ff0000";
+      errReferenceData.textContent =
+        "* Vous devez avoir au moins 12 ans au moment de l'inscription";
+      e.target.style.border = "2.8px solid #ff0000";
+    } else if (
+      // when user's will have 12 years old on the year
+      (dataBirthdate.getFullYear() === yearToday - 12 &&
+        dataBirthdate.getMonth() > monthToday) |
+      (dataBirthdate.getFullYear() === yearToday - 12 &&
+        dataBirthdate.getMonth() === monthToday &&
+        dataBirthdate.getDate() > dayToday) |
+      // When users has 11 year or less and won't have 12 years old on the year
+      (dataBirthdate.getFullYear() > yearToday - 12) |
+      !e.target.value.match(regex)
+    ) {
+      errReferenceData.style.color = "#ff0000";
+      errReferenceData.textContent =
+        "* Vous devez avoir au moins 12 ans au moment de l'inscription";
+      e.target.style.border = "2.8px solid #ff0000";
+    } else {
+      errReferenceData.style.color = "green";
+      errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
+      e.target.style.border = styleBorderElse;
+    }
+  });
+}
 //--------------------------
 // INPUT FIRSTNAME FOCUSING
 //--------------------------
@@ -154,33 +205,27 @@ eventInputs(
 // INPUT BIRTHDATE FOCUSING
 //--------------------------
 // Launch function for BIRTHDATE on event "INPUT"
-eventInputs(
+eventInputsBirthdate(
   inputBirthdate,
   "input",
-  8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSIN"
-eventInputs(
+eventInputsBirthdate(
   inputBirthdate,
   "focusin",
-  8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "2.8px solid green"
 );
 // Launch function for BIRTHDATE on event "FOCUSOUT"
-eventInputs(
+eventInputsBirthdate(
   inputBirthdate,
   "focusout",
-  8,
   regexBirthdate,
   errorDataBirthdate,
-  "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011",
   "0.8px solid #ccc"
 );
 

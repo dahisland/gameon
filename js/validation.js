@@ -24,6 +24,39 @@ function validateInputs(
   }
 }
 
+function validateInputBirthdate() {
+  // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
+  // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
+  let dataBirthdate = inputBirthdate.valueAsDate;
+
+  if (dataBirthdate == null) {
+    // When user hasn't filled any values yet (valueAsDate is null)
+    errorDataBirthdate.style.color = "#ff0000";
+    errorDataBirthdate.textContent =
+      "* Vous devez avoir au moins 12 ans au moment de l'inscription";
+    inputBirthdate.style.border = "2.8px solid #ff0000";
+  } else if (
+    // when user's will have 12 years old on the year
+    (dataBirthdate.getFullYear() === yearToday - 12 &&
+      dataBirthdate.getMonth() > monthToday) |
+    (dataBirthdate.getFullYear() === yearToday - 12 &&
+      dataBirthdate.getMonth() === monthToday &&
+      dataBirthdate.getDate() > dayToday) |
+    // When users has 11 year or less and won't have 12 years old on the year
+    (dataBirthdate.getFullYear() > yearToday - 12) |
+    !inputBirthdate.value.match(regexBirthdate)
+  ) {
+    errorDataBirthdate.style.color = "#ff0000";
+    errorDataBirthdate.textContent =
+      "* Vous devez avoir au moins 12 ans au moment de l'inscription";
+    inputBirthdate.style.border = "2.8px solid #ff0000";
+  } else {
+    errorDataBirthdate.style.color = "green";
+    errorDataBirthdate.innerHTML = '<i class="fa fa-check"></i>';
+    inputBirthdate.style.border = "0.8px solid #ccc";
+  }
+}
+
 // Function for validation input type radio : Choose a LOCALISATION CONTEST - on submit
 function validateLocalisation() {
   if (
@@ -88,13 +121,7 @@ function validate(event) {
     "* Veuillez entrer une adresse mail valide"
   );
   // Call function for Input BIRTHDATE
-  validateInputs(
-    inputBirthdate,
-    8,
-    regexBirthdate,
-    errorDataBirthdate,
-    "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011"
-  );
+  validateInputBirthdate();
   // Call function for Input QUANTITY CONTEST
   validateInputs(
     inputQuantityContest,
@@ -149,7 +176,7 @@ function validate(event) {
       8,
       regexBirthdate,
       errorDataBirthdate,
-      "* Veuillez entrer une date entre le 01/01/1900 et le 31/12/2011"
+      "* Vous devez avoir au moins 12 ans au moment de l'inscription"
     )
   ) {
     return false;
