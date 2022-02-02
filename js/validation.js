@@ -1,6 +1,12 @@
-//-------------------------------- FUNCTIONS FOR VALIDATION ELEMENTS IN FORM
+// This javascript file handles validation form when the user click on the "submit" button
 
-// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/BIRTHDATE/QUANTITY CONTEST - on submit
+// -------------------------------------------------------------------------- //
+// ------------- FUNCTIONS FOR VALIDATION INPUTS IN FORM -------------------- //
+// -------------------------------------------------------------------------- //
+
+// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/BIRTHDATE/QUANTITY CONTEST
+// Called on submit
+
 function validateInputs(
   inputReferenceNodelist,
   lengthValue,
@@ -23,7 +29,8 @@ function validateInputs(
     return true;
   }
 }
-
+// Function for validation input BIRTHDATE
+// Called on submit
 function validateInputBirthdate() {
   // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
@@ -56,7 +63,8 @@ function validateInputBirthdate() {
   }
 }
 
-// Function for validation input type radio : Choose a LOCALISATION CONTEST - on submit
+// Function for validation input type radio : Choose a LOCALISATION CONTEST
+// Called on submit
 function validateLocalisation() {
   if (
     location1.checked == false &&
@@ -75,7 +83,8 @@ function validateLocalisation() {
     return true;
   }
 }
-// Function for validation input type checkbox : ACCEPT CONDITIONS - on submit
+// Function for validation input type checkbox : ACCEPT CONDITIONS
+// Called on submit
 function validateConditions() {
   if (checkbox1.checked == false) {
     errorDataConditions.style.color = "#ff0000";
@@ -89,9 +98,10 @@ function validateConditions() {
   }
 }
 
-//----------------------------------------------- VALIDATION FORM ON SUBMIT
+// -------------------------------------------------------------------------- //
+// ----------------- FUNCTIONS VALIDATION FORM ON SUBMIT -------------------- //
+// -------------------------------------------------------------------------- //
 
-// Function validate form onsubmit
 function validate(event) {
   event.preventDefault(); // Prevent default reloading page after submit
   // Call function for Input FIRST NAME

@@ -1,5 +1,10 @@
-//------------------------------------------------------------- INPUT MESSAGES ON FOCUS
-// Variables for REGEX
+// This javascript file handles validations events when the user completes each
+// input without having clicked the "submit" button yet
+
+// -------------------------------------------------------------------------- //
+// ---------------------------------- REGEX --------------------------------- //
+// -------------------------------------------------------------------------- //
+
 const regexNames =
   /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ,/.\s-]{2,50}$/g;
 const regexEmail = /^([\w]{1,}[\@][a-z]{1,}[\.][a-z]{2,5})$/;
@@ -7,7 +12,12 @@ const regexBirthdate =
   /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
 
-// Function to apply events "input", "focusin" and "focusout" for inputs FIRSTNAME & LASTNAME
+// -------------------------------------------------------------------------- //
+// ----------------------- DECLARATION FUNCTIONS ---------------------------- //
+// -------------------------------------------------------------------------- //
+
+// Function for validations inputs FIRSTNAME/LASTNAME/EMAIL/QUANTITY CONTEST
+// on events "input", "focusin" and "focusout"
 
 function eventInputs(
   inputReferenceNodelist, // Variable name for input in Nodlist input
@@ -45,11 +55,12 @@ function eventInputs(
     }
   });
 }
-
-// Function for birthdate : valid/invalid input by calculating age of user in terms of today's date
+//-------------------------------------------------------------------------
+// Function for validation BIRTHDATE on event input & focus
+// valid/invalid input by calculating age of user in terms of today's date
 // Age minimum required at the time of registration : 12 years old
 
-// function to collect today's date (day/month and year)
+// Variables to collect today's date (day, month and year)
 today = new Date();
 let dayToday = today.getDate();
 let monthToday = today.getMonth();
@@ -96,6 +107,53 @@ function eventInputsBirthdate(
     }
   });
 }
+//----------------------------------------------------------------------------
+// Function for validation LOCALISATION contest on event click
+
+function eventInputLocalisation() {
+  inputRadio.forEach((radio) =>
+    radio.addEventListener("click", () => {
+      if (
+        location1.checked == false &&
+        location2.checked == false &&
+        location3.checked == false &&
+        location4.checked == false &&
+        location5.checked == false &&
+        location6.checked == false
+      ) {
+        errorDataLocalisation.style.color = "#ff0000";
+        errorDataLocalisation.textContent =
+          "* Veuillez cocher une localisation";
+      } else {
+        errorDataLocalisation.style.color = "green";
+        errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
+      }
+    })
+  );
+}
+
+//-------------------------------------------------------------------------
+// Function for validation CONDITIONS on event click
+
+function eventInputConditions() {
+  checkbox1.addEventListener("click", () => {
+    if (checkbox1.checked == false) {
+      errorDataConditions.style.color = "#ff0000";
+      errorDataConditions.textContent =
+        "* Veuillez accepter les conditions d'utilisation";
+      return false;
+    } else {
+      errorDataConditions.style.color = "green";
+      errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
+      return true;
+    }
+  });
+}
+
+// -------------------------------------------------------------------------- //
+// ------------------------- CALL FUNCTIONS --------------------------------- //
+// -------------------------------------------------------------------------- //
+
 //--------------------------
 // INPUT FIRSTNAME FOCUSING
 //--------------------------
@@ -262,3 +320,15 @@ eventInputs(
   "* Veuillez entrer un nombre entre 0 et 99",
   "0.8px solid #ccc"
 );
+
+//-----------------------------------
+// INPUT LOCALISATION CONTEST CLICK
+//-----------------------------------
+
+eventInputLocalisation();
+
+//--------------------------
+// INPUT CONDITIONS CLICK
+//--------------------------
+
+eventInputConditions();

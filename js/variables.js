@@ -9,12 +9,13 @@ const errorData = document.querySelectorAll(".error-data"); // Const for the tex
 const textThanks = document.querySelector(".text-thanks"); // Const for container <div> with "message thanks" after a validation form succeed
 const input = document.querySelectorAll("input"); // Const for all <input> elements
 
-// Variables for each element contained in the Nodelist input
+// Variables for each element contained in the Nodelist INPUT
 const inputFirstName = input[0];
 const inputLastName = input[1];
 const inputEmail = input[2];
 const inputBirthdate = input[3];
 const inputQuantityContest = input[4];
+const inputRadio = document.getElementsByName("location");
 
 // Variables for each element contained in the Nodelist class "error-data"
 const errorDataFirstName = errorData[0];
