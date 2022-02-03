@@ -42,6 +42,7 @@ function eventInputs(
       (inputReferenceNodelist == inputLastName)
     ) {
       e.target.value = e.target.value.replace(/[\s]{2,}/g, " ");
+      e.target.value = e.target.value.replace(/[\-]{2,}/g, "-");
       e.target.value = e.target.value.replace(/^[\s]/, "");
     }
     // display an error message & change border color when the number of caracters isn't correct
