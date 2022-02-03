@@ -25,3 +25,28 @@ const errorDataBirthdate = errorData[3];
 const errorDataQuantityContest = errorData[4];
 const errorDataLocalisation = errorData[5];
 const errorDataConditions = errorData[6];
+
+// Variables for each message error
+
+let textErrorNames =
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux";
+let textErrorEmail =
+  "* Veuillez entrer une adresse mail valide (max 40 caractères)";
+let textErrorBirthdate =
+  "* Vous devez avoir au moins 12 ans au moment de l'inscription";
+let textErrorQuantity = "* Veuillez entrer un nombre entre 0 et 99";
+let textErrorLocalisation = "* Veuillez cocher une localisation";
+let textErrorConditions = "* Veuillez accepter les conditions d'utilisation";
+
+// Variables for style CSS
+
+let fontColorError = "#ff0000";
+let fontColorValid = "green";
+let borderColorError = "2.8px solid #ff0000";
+let borderColorValid = "2.8px solid green";
+let borderColorInitial = "0.8px solid #ccc";
+
+// Variables for innerHTML (icon & message thanks)
+let iconValid = '<i class="fa fa-check"></i>';
+let messageThanks =
+  '<p class="txt-thanks">Merci pour votre inscription<p><button class="btn-close">Fermer</button>';

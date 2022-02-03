@@ -50,12 +50,12 @@ function eventInputs(
       (e.target.value.length > lengthValue2) |
       !e.target.value.match(regex)
     ) {
-      errReferenceData.style.color = "#ff0000";
+      errReferenceData.style.color = fontColorError;
       errReferenceData.textContent = textError;
-      e.target.style.border = "2.8px solid #ff0000";
+      e.target.style.border = borderColorError;
     } else {
-      errReferenceData.style.color = "green";
-      errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
+      errReferenceData.style.color = fontColorValid;
+      errReferenceData.innerHTML = iconValid;
       e.target.style.border = styleBorderElse;
     }
   });
@@ -86,10 +86,9 @@ function eventInputsBirthdate(
 
     if (dataBirthdate == null) {
       // When user hasn't filled any values yet (valueAsDate is null)
-      errReferenceData.style.color = "#ff0000";
-      errReferenceData.textContent =
-        "* Vous devez avoir au moins 12 ans au moment de l'inscription";
-      e.target.style.border = "2.8px solid #ff0000";
+      errReferenceData.style.color = fontColorError;
+      errReferenceData.textContent = textErrorBirthdate;
+      e.target.style.border = borderColorError;
     } else if (
       // when user's will have 12 years old on the year
       (dataBirthdate.getFullYear() === yearToday - 12 &&
@@ -101,13 +100,12 @@ function eventInputsBirthdate(
       (dataBirthdate.getFullYear() > yearToday - 12) |
       !e.target.value.match(regex)
     ) {
-      errReferenceData.style.color = "#ff0000";
-      errReferenceData.textContent =
-        "* Vous devez avoir au moins 12 ans au moment de l'inscription";
-      e.target.style.border = "2.8px solid #ff0000";
+      errReferenceData.style.color = fontColorError;
+      errReferenceData.textContent = textErrorBirthdate;
+      e.target.style.border = borderColorError;
     } else {
-      errReferenceData.style.color = "green";
-      errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
+      errReferenceData.style.color = fontColorValid;
+      errReferenceData.innerHTML = iconValid;
       e.target.style.border = styleBorderElse;
     }
   });
@@ -126,12 +124,11 @@ function eventInputLocalisation() {
         location5.checked == false &&
         location6.checked == false
       ) {
-        errorDataLocalisation.style.color = "#ff0000";
-        errorDataLocalisation.textContent =
-          "* Veuillez cocher une localisation";
+        errorDataLocalisation.style.color = fontColorError;
+        errorDataLocalisation.textContent = textErrorLocalisation;
       } else {
-        errorDataLocalisation.style.color = "green";
-        errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
+        errorDataLocalisation.style.color = fontColorValid;
+        errorDataLocalisation.innerHTML = iconValid;
       }
     })
   );
@@ -143,13 +140,12 @@ function eventInputLocalisation() {
 function eventInputConditions() {
   checkbox1.addEventListener("click", () => {
     if (checkbox1.checked == false) {
-      errorDataConditions.style.color = "#ff0000";
-      errorDataConditions.textContent =
-        "* Veuillez accepter les conditions d'utilisation";
+      errorDataConditions.style.color = fontColorError;
+      errorDataConditions.textContent = textErrorConditions;
       return false;
     } else {
-      errorDataConditions.style.color = "green";
-      errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
+      errorDataConditions.style.color = fontColorValid;
+      errorDataConditions.innerHTML = iconValid;
       return true;
     }
   });
@@ -171,8 +167,8 @@ eventInputs(
   30,
   regexNames,
   errorDataFirstName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "2.8px solid green"
+  textErrorNames,
+  borderColorValid
 );
 // Launch function for FIRSTNAME on event "FOCUSIN"
 //(Even when user hasn't write anything, a notification inform him what he has to write)
@@ -183,8 +179,8 @@ eventInputs(
   30,
   regexNames,
   errorDataFirstName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "2.8px solid green"
+  textErrorNames,
+  borderColorValid
 );
 // Launch function for FIRSTNAME on event "FOCUSOUT"
 // (If user quit focus, he will be notified if his content still isn't valid)
@@ -195,8 +191,8 @@ eventInputs(
   30,
   regexNames,
   errorDataFirstName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "0.8px solid #ccc"
+  textErrorNames,
+  borderColorInitial
 );
 
 //--------------------------
@@ -210,8 +206,8 @@ eventInputs(
   30,
   regexNames,
   errorDataLastName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "2.8px solid green"
+  textErrorNames,
+  borderColorValid
 );
 // Launch function for LASTNAME on event "FOCUSIN"
 eventInputs(
@@ -221,8 +217,8 @@ eventInputs(
   30,
   regexNames,
   errorDataLastName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "2.8px solid green"
+  textErrorNames,
+  borderColorValid
 );
 // Launch function for LASTNAME on event "FOCUSOUT"
 eventInputs(
@@ -232,8 +228,8 @@ eventInputs(
   30,
   regexNames,
   errorDataLastName,
-  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
-  "0.8px solid #ccc"
+  textErrorNames,
+  borderColorInitial
 );
 
 //--------------------------
@@ -247,8 +243,8 @@ eventInputs(
   40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
-  "2.8px solid green"
+  textErrorEmail,
+  borderColorValid
 );
 // Launch function for EMAIL on event "FOCUSIN"
 eventInputs(
@@ -258,8 +254,8 @@ eventInputs(
   40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
-  "2.8px solid green"
+  textErrorEmail,
+  borderColorValid
 );
 // Launch function for EMAIL on event "FOCUSOUT"
 eventInputs(
@@ -269,8 +265,8 @@ eventInputs(
   40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
-  "0.8px solid #ccc"
+  textErrorEmail,
+  borderColorInitial
 );
 
 //--------------------------
@@ -282,7 +278,7 @@ eventInputsBirthdate(
   "input",
   regexBirthdate,
   errorDataBirthdate,
-  "2.8px solid green"
+  borderColorValid
 );
 // Launch function for BIRTHDATE on event "FOCUSIN"
 eventInputsBirthdate(
@@ -290,7 +286,7 @@ eventInputsBirthdate(
   "focusin",
   regexBirthdate,
   errorDataBirthdate,
-  "2.8px solid green"
+  borderColorValid
 );
 // Launch function for BIRTHDATE on event "FOCUSOUT"
 eventInputsBirthdate(
@@ -298,7 +294,7 @@ eventInputsBirthdate(
   "focusout",
   regexBirthdate,
   errorDataBirthdate,
-  "0.8px solid #ccc"
+  borderColorInitial
 );
 
 //--------------------------
@@ -312,8 +308,8 @@ eventInputs(
   2,
   regexQuantityContest,
   errorDataQuantityContest,
-  "* Veuillez entrer un nombre entre 0 et 99",
-  "2.8px solid green"
+  textErrorQuantity,
+  borderColorValid
 );
 // Launch function for QUANTITY CONTEST on event "FOCUSIN"
 eventInputs(
@@ -323,8 +319,8 @@ eventInputs(
   2,
   regexQuantityContest,
   errorDataQuantityContest,
-  "* Veuillez entrer un nombre entre 0 et 99",
-  "2.8px solid green"
+  textErrorQuantity,
+  borderColorValid
 );
 // Launch function for QUANTITY CONTEST on event "FOCUSOUT"
 eventInputs(
@@ -334,8 +330,8 @@ eventInputs(
   2,
   regexQuantityContest,
   errorDataQuantityContest,
-  "* Veuillez entrer un nombre entre 0 et 99",
-  "0.8px solid #ccc"
+  textErrorQuantity,
+  borderColorInitial
 );
 
 //-----------------------------------

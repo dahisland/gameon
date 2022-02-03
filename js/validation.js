@@ -20,29 +20,29 @@ function validateInputs(
     (inputReferenceNodelist.value.length > lengthValue2) |
     !inputReferenceNodelist.value.match(regex)
   ) {
-    inputReferenceNodelist.style.border = "2.8px solid #ff0000";
-    errReferenceData.style.color = "#ff0000";
+    inputReferenceNodelist.style.border = borderColorError;
+    errReferenceData.style.color = fontColorError;
     errReferenceData.textContent = textError;
     return false;
   } else {
-    errReferenceData.style.color = "green";
-    errReferenceData.innerHTML = '<i class="fa fa-check"></i>';
-    inputReferenceNodelist.style.border = "0.8px solid #ccc";
+    errReferenceData.style.color = fontColorValid;
+    errReferenceData.innerHTML = iconValid;
+    inputReferenceNodelist.style.border = borderColorInitial;
     return true;
   }
 }
 // Function for validation input BIRTHDATE
 // Called on submit
+
 function validateInputBirthdate() {
   // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
   let dataBirthdate = inputBirthdate.valueAsDate;
   if (dataBirthdate == null) {
     // When user hasn't filled any values yet (valueAsDate is null)
-    errorDataBirthdate.style.color = "#ff0000";
-    errorDataBirthdate.textContent =
-      "* Vous devez avoir au moins 12 ans au moment de l'inscription";
-    inputBirthdate.style.border = "2.8px solid #ff0000";
+    errorDataBirthdate.style.color = fontColorError;
+    errorDataBirthdate.textContent = textErrorBirthdate;
+    inputBirthdate.style.border = borderColorError;
   } else if (
     // when user's will have 12 years old on the year
     (dataBirthdate.getFullYear() === yearToday - 12 &&
@@ -54,14 +54,13 @@ function validateInputBirthdate() {
     (dataBirthdate.getFullYear() > yearToday - 12) |
     !inputBirthdate.value.match(regexBirthdate)
   ) {
-    errorDataBirthdate.style.color = "#ff0000";
-    errorDataBirthdate.textContent =
-      "* Vous devez avoir au moins 12 ans au moment de l'inscription";
-    inputBirthdate.style.border = "2.8px solid #ff0000";
+    errorDataBirthdate.style.color = fontColorError;
+    errorDataBirthdate.textContent = textErrorBirthdate;
+    inputBirthdate.style.border = borderColorError;
   } else {
-    errorDataBirthdate.style.color = "green";
-    errorDataBirthdate.innerHTML = '<i class="fa fa-check"></i>';
-    inputBirthdate.style.border = "0.8px solid #ccc";
+    errorDataBirthdate.style.color = fontColorValid;
+    errorDataBirthdate.innerHTML = iconValid;
+    inputBirthdate.style.border = borderColorInitial;
   }
 }
 
@@ -76,12 +75,12 @@ function validateLocalisation() {
     location5.checked == false &&
     location6.checked == false
   ) {
-    errorDataLocalisation.style.color = "#ff0000";
-    errorDataLocalisation.textContent = "* Veuillez cocher une localisation";
+    errorDataLocalisation.style.color = fontColorError;
+    errorDataLocalisation.textContent = textErrorLocalisation;
     return false;
   } else {
-    errorDataLocalisation.style.color = "green";
-    errorDataLocalisation.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataLocalisation.style.color = fontColorValid;
+    errorDataLocalisation.innerHTML = iconValid;
     return true;
   }
 }
@@ -89,13 +88,12 @@ function validateLocalisation() {
 // Called on submit
 function validateConditions() {
   if (checkbox1.checked == false) {
-    errorDataConditions.style.color = "#ff0000";
-    errorDataConditions.textContent =
-      "* Veuillez accepter les conditions d'utilisation";
+    errorDataConditions.style.color = fontColorError;
+    errorDataConditions.textContent = textErrorConditions;
     return false;
   } else {
-    errorDataConditions.style.color = "green";
-    errorDataConditions.innerHTML = '<i class="fa fa-check"></i>';
+    errorDataConditions.style.color = fontColorValid;
+    errorDataConditions.innerHTML = iconValid;
     return true;
   }
 }
@@ -113,7 +111,7 @@ function validate(event) {
     30,
     regexNames,
     errorDataFirstName,
-    "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
+    textErrorNames
   );
   // Call function for Input LAST NAME
   validateInputs(
@@ -122,17 +120,10 @@ function validate(event) {
     30,
     regexNames,
     errorDataLastName,
-    "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
+    textErrorNames
   );
   // Call function for Input EMAIL
-  validateInputs(
-    inputEmail,
-    6,
-    40,
-    regexEmail,
-    errorDataEmail,
-    "* Veuillez entrer une adresse mail valide (max 40 caractères)"
-  );
+  validateInputs(inputEmail, 6, 40, regexEmail, errorDataEmail, textErrorEmail);
   // Call function for Input BIRTHDATE
   validateInputBirthdate(event);
   // Call function for Input QUANTITY CONTEST
@@ -142,7 +133,7 @@ function validate(event) {
     2,
     regexQuantityContest,
     errorDataQuantityContest,
-    "* Veuillez entrer un nombre entre 0 et 99"
+    textErrorQuantity
   );
   // Call function for Input LOCALISATION CONTEST
   validateLocalisation();
@@ -158,7 +149,7 @@ function validate(event) {
       30,
       regexNames,
       errorDataFirstName,
-      "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
+      textErrorNames
     )
   ) {
     return false;
@@ -170,7 +161,7 @@ function validate(event) {
       30,
       regexNames,
       errorDataLastName,
-      "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
+      textErrorNames
     )
   ) {
     return false;
@@ -182,7 +173,7 @@ function validate(event) {
       40,
       regexEmail,
       errorDataEmail,
-      "* Veuillez entrer une adresse mail valide (max 40 caractères)"
+      textErrorEmail
     )
   ) {
     return false;
@@ -194,7 +185,7 @@ function validate(event) {
       12,
       regexBirthdate,
       errorDataBirthdate,
-      "* Vous devez avoir au moins 12 ans au moment de l'inscription"
+      textErrorBirthdate
     )
   ) {
     return false;
@@ -206,7 +197,7 @@ function validate(event) {
       2,
       regexQuantityContest,
       errorDataQuantityContest,
-      "* Veuillez entrer un nombre entre 0 et 99"
+      textErrorQuantity
     )
   ) {
     return false;
@@ -225,9 +216,7 @@ function validate(event) {
     form.style.display = "none";
     // Form is valid => a "message thanks" is displayed
     textThanks.style.display = "block";
-    textThanks.innerHTML =
-      '<p class="txt-thanks">Merci pour votre inscription<p><button class="btn-close">Fermer</button>';
-    // Form is valid => a close button is displayed to close modal
+    textThanks.innerHTML = messageThanks; // Form is valid => a close button is displayed to close modal
     const buttonClose = document.querySelectorAll(".btn-close");
     // Call function Close modal on click
     buttonClose.forEach((btnClose) =>
