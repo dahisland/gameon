@@ -23,6 +23,7 @@ function eventInputs(
   inputReferenceNodelist, // Variable name for input in Nodlist input
   typeEvent, // Type of event (input, focusin or focusout) - string
   lengthValue, // Value of minimul length required
+  lengthValue2, // Value of minimul length required
   regex, // Regex
   errReferenceData, // Variable name for div error-data in Nodelist error-data
   textError, // Message displayed when error - string
@@ -44,7 +45,11 @@ function eventInputs(
       e.target.value = e.target.value.replace(/^[\s]/, "");
     }
     // display an error message & change border color when the number of caracters isn't correct
-    if ((e.target.value.length < lengthValue) | !e.target.value.match(regex)) {
+    if (
+      (e.target.value.length < lengthValue) |
+      (e.target.value.length > lengthValue2) |
+      !e.target.value.match(regex)
+    ) {
       errReferenceData.style.color = "#ff0000";
       errReferenceData.textContent = textError;
       e.target.style.border = "2.8px solid #ff0000";
@@ -163,9 +168,10 @@ eventInputs(
   inputFirstName,
   "input",
   2,
+  30,
   regexNames,
   errorDataFirstName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "2.8px solid green"
 );
 // Launch function for FIRSTNAME on event "FOCUSIN"
@@ -174,9 +180,10 @@ eventInputs(
   inputFirstName,
   "focusin",
   2,
+  30,
   regexNames,
   errorDataFirstName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "2.8px solid green"
 );
 // Launch function for FIRSTNAME on event "FOCUSOUT"
@@ -185,9 +192,10 @@ eventInputs(
   inputFirstName,
   "focusout",
   2,
+  30,
   regexNames,
   errorDataFirstName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "0.8px solid #ccc"
 );
 
@@ -199,9 +207,10 @@ eventInputs(
   inputLastName,
   "input",
   2,
+  30,
   regexNames,
   errorDataLastName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "2.8px solid green"
 );
 // Launch function for LASTNAME on event "FOCUSIN"
@@ -209,9 +218,10 @@ eventInputs(
   inputLastName,
   "focusin",
   2,
+  30,
   regexNames,
   errorDataLastName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "2.8px solid green"
 );
 // Launch function for LASTNAME on event "FOCUSOUT"
@@ -219,9 +229,10 @@ eventInputs(
   inputLastName,
   "focusout",
   2,
+  30,
   regexNames,
   errorDataLastName,
-  "* 2 caractères minimum, sans chiffre ni caractères spéciaux",
+  "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux",
   "0.8px solid #ccc"
 );
 
@@ -233,9 +244,10 @@ eventInputs(
   inputEmail,
   "input",
   6,
+  40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide",
+  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
   "2.8px solid green"
 );
 // Launch function for EMAIL on event "FOCUSIN"
@@ -243,9 +255,10 @@ eventInputs(
   inputEmail,
   "focusin",
   6,
+  40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide",
+  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
   "2.8px solid green"
 );
 // Launch function for EMAIL on event "FOCUSOUT"
@@ -253,9 +266,10 @@ eventInputs(
   inputEmail,
   "focusout",
   6,
+  40,
   regexEmail,
   errorDataEmail,
-  "* Veuillez entrer une adresse mail valide",
+  "* Veuillez entrer une adresse mail valide (max 40 caractères)",
   "0.8px solid #ccc"
 );
 
@@ -295,6 +309,7 @@ eventInputs(
   inputQuantityContest,
   "input",
   1,
+  2,
   regexQuantityContest,
   errorDataQuantityContest,
   "* Veuillez entrer un nombre entre 0 et 99",
@@ -305,6 +320,7 @@ eventInputs(
   inputQuantityContest,
   "focusin",
   1,
+  2,
   regexQuantityContest,
   errorDataQuantityContest,
   "* Veuillez entrer un nombre entre 0 et 99",
@@ -315,6 +331,7 @@ eventInputs(
   inputQuantityContest,
   "focusout",
   1,
+  2,
   regexQuantityContest,
   errorDataQuantityContest,
   "* Veuillez entrer un nombre entre 0 et 99",

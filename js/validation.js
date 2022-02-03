@@ -10,12 +10,14 @@
 function validateInputs(
   inputReferenceNodelist,
   lengthValue,
+  lengthValue2,
   regex,
   errReferenceData,
   textError
 ) {
   if (
     (inputReferenceNodelist.value.length < lengthValue) |
+    (inputReferenceNodelist.value.length > lengthValue2) |
     !inputReferenceNodelist.value.match(regex)
   ) {
     inputReferenceNodelist.style.border = "2.8px solid #ff0000";
@@ -99,7 +101,7 @@ function validateConditions() {
 }
 
 // -------------------------------------------------------------------------- //
-// ----------------- FUNCTIONS VALIDATION FORM ON SUBMIT -------------------- //
+// ----------------- FUNCTION VALIDATION FORM ON SUBMIT -------------------- //
 // -------------------------------------------------------------------------- //
 
 function validate(event) {
@@ -108,25 +110,28 @@ function validate(event) {
   validateInputs(
     inputFirstName,
     2,
+    30,
     regexNames,
     errorDataFirstName,
-    "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+    "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
   );
   // Call function for Input LAST NAME
   validateInputs(
     inputLastName,
     2,
+    30,
     regexNames,
     errorDataLastName,
-    "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+    "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
   );
   // Call function for Input EMAIL
   validateInputs(
     inputEmail,
     6,
+    40,
     regexEmail,
     errorDataEmail,
-    "* Veuillez entrer une adresse mail valide"
+    "* Veuillez entrer une adresse mail valide (max 40 caractères)"
   );
   // Call function for Input BIRTHDATE
   validateInputBirthdate(event);
@@ -134,6 +139,7 @@ function validate(event) {
   validateInputs(
     inputQuantityContest,
     1,
+    2,
     regexQuantityContest,
     errorDataQuantityContest,
     "* Veuillez entrer un nombre entre 0 et 99"
@@ -149,9 +155,10 @@ function validate(event) {
     !validateInputs(
       inputFirstName,
       2,
+      30,
       regexNames,
       errorDataFirstName,
-      "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+      "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
     )
   ) {
     return false;
@@ -160,9 +167,10 @@ function validate(event) {
     !validateInputs(
       inputLastName,
       2,
+      30,
       regexNames,
       errorDataLastName,
-      "* 2 caractères minimum, sans chiffre ni caractères spéciaux"
+      "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux"
     )
   ) {
     return false;
@@ -171,9 +179,10 @@ function validate(event) {
     !validateInputs(
       inputEmail,
       6,
+      40,
       regexEmail,
       errorDataEmail,
-      "* Veuillez entrer une adresse mail valide"
+      "* Veuillez entrer une adresse mail valide (max 40 caractères)"
     )
   ) {
     return false;
@@ -182,6 +191,7 @@ function validate(event) {
     !validateInputs(
       inputBirthdate,
       8,
+      12,
       regexBirthdate,
       errorDataBirthdate,
       "* Vous devez avoir au moins 12 ans au moment de l'inscription"
@@ -193,6 +203,7 @@ function validate(event) {
     !validateInputs(
       inputQuantityContest,
       1,
+      2,
       regexQuantityContest,
       errorDataQuantityContest,
       "* Veuillez entrer un nombre entre 0 et 99"
