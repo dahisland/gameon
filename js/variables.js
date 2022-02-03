@@ -26,8 +26,14 @@ const errorDataQuantityContest = errorData[4];
 const errorDataLocalisation = errorData[5];
 const errorDataConditions = errorData[6];
 
-// Variables for each message error
+// Variables for elements span on topnav
 
+const spanDetails = document.querySelector("#navbar-details");
+const spanPropos = document.querySelector("#navbar-propos");
+const spanContact = document.querySelector("#navbar-contact");
+const spanEvents = document.querySelector("#navbar-events");
+
+// Variables for each message error
 let textErrorNames =
   "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux";
 let textErrorEmail =
@@ -39,7 +45,6 @@ let textErrorLocalisation = "* Veuillez cocher une localisation";
 let textErrorConditions = "* Veuillez accepter les conditions d'utilisation";
 
 // Variables for style CSS
-
 let fontColorError = "#ff0000";
 let fontColorValid = "green";
 let borderColorError = "2.8px solid #ff0000";

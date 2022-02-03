@@ -513,6 +513,7 @@ footer {
   .topnav.responsive a {
     display: block;
     text-align: left;
+    margin-bottom: 5px;
   }
   .hero-section {
     display: block;
@@ -601,10 +602,22 @@ footer {
     box-shadow: 0px 2px 4px #ff0000;
     border-radius: 15px;
   }
+  .topnav a.icon:hover {
+    background: red;
+  }
   .topnav.responsive .icon {
     right: 0;
     color: #fff;
     box-shadow: inherit;
+    width: 100%;
+    background: red;
+    text-align: center;
+  }
+  .topnav.topnav.responsive .icon:hover {
+    background: red;
+  }
+  #navbar-details {
+    margin-top: 50px;
   }
   .topnav.responsive a {
     font-size: 1.1rem;
