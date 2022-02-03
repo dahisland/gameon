@@ -1,7 +1,7 @@
 // This javascript file handles validation form when the user click on the "submit" button
 
 // -------------------------------------------------------------------------- //
-// ------------- FUNCTIONS FOR VALIDATION INPUTS IN FORM -------------------- //
+// ---------------- FUNCTIONS FOR VALIDATION INPUTS IN FORM ----------------- //
 // -------------------------------------------------------------------------- //
 
 // Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/BIRTHDATE/QUANTITY CONTEST
