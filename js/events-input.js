@@ -315,7 +315,7 @@ eventInputs(
   "* Veuillez entrer un nombre entre 0 et 99",
   "2.8px solid green"
 );
-// Launch function for BIRTHDATE on event "FOCUSIN"
+// Launch function for QUANTITY CONTEST on event "FOCUSIN"
 eventInputs(
   inputQuantityContest,
   "focusin",
@@ -326,7 +326,7 @@ eventInputs(
   "* Veuillez entrer un nombre entre 0 et 99",
   "2.8px solid green"
 );
-// Launch function for BIRTHDATE on event "FOCUSOUT"
+// Launch function for QUANTITY CONTEST on event "FOCUSOUT"
 eventInputs(
   inputQuantityContest,
   "focusout",
