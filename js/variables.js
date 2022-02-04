@@ -1,4 +1,10 @@
-// DOM Elements
+// -------------------------------------------------------------------------- //
+// ------------------------- DECLARATIONS VARIABLES ------------------------- //
+// -------------------------------------------------------------------------- //
+// This javascript contains all variables used in others javascripts files
+
+// ------------------------ DOM ELEMENTS ---------------------- //
+
 const modalbg = document.querySelector(".bground"); // Const for the modal background
 const modalBtn = document.querySelectorAll(".modal-btn"); // Const for <button> "Je m'inscris"
 const formData = document.querySelectorAll(".formData"); // Const for modal datas
@@ -9,7 +15,9 @@ const errorData = document.querySelectorAll(".error-data"); // Const for the tex
 const textThanks = document.querySelector(".text-thanks"); // Const for container <div> with "message thanks" after a validation form succeed
 const input = document.querySelectorAll("input"); // Const for all <input> elements
 
+// -------------------------- INPUTS ------------------------- //
 // Variables for each element contained in the Nodelist INPUT
+
 const inputFirstName = input[0];
 const inputLastName = input[1];
 const inputEmail = input[2];
@@ -17,7 +25,9 @@ const inputBirthdate = input[3];
 const inputQuantityContest = input[4];
 const inputRadio = document.getElementsByName("location");
 
+// ------------------------ ERROR-DATA ----------------------- //
 // Variables for each element contained in the Nodelist class "error-data"
+
 const errorDataFirstName = errorData[0];
 const errorDataLastName = errorData[1];
 const errorDataEmail = errorData[2];
@@ -26,6 +36,7 @@ const errorDataQuantityContest = errorData[4];
 const errorDataLocalisation = errorData[5];
 const errorDataConditions = errorData[6];
 
+// ------------------------- TOPNAV ------------------------- //
 // Variables for elements span on topnav
 
 const spanDetails = document.querySelector("#navbar-details");
@@ -33,7 +44,9 @@ const spanPropos = document.querySelector("#navbar-propos");
 const spanContact = document.querySelector("#navbar-contact");
 const spanEvents = document.querySelector("#navbar-events");
 
+// -------------------- MESSAGES ERRORS --------------------- //
 // Variables for each message error
+
 let textErrorNames =
   "* Entre 2 et 30 caractères, sans chiffre ni caractères spéciaux";
 let textErrorEmail =
@@ -44,14 +57,18 @@ let textErrorQuantity = "* Veuillez entrer un nombre entre 0 et 99";
 let textErrorLocalisation = "* Veuillez cocher une localisation";
 let textErrorConditions = "* Veuillez accepter les conditions d'utilisation";
 
+// ------------------------ STYLE CSS ------------------------ //
 // Variables for style CSS
+
 let fontColorError = "#ff0000";
 let fontColorValid = "green";
 let borderColorError = "2.8px solid #ff0000";
 let borderColorValid = "2.8px solid green";
 let borderColorInitial = "0.8px solid #ccc";
 
+// ----------------------- INNER HTML ------------------------ //
 // Variables for innerHTML (icon & message thanks)
+
 let iconValid = '<i class="fa fa-check"></i>';
 let messageThanks =
   '<p class="txt-thanks">Merci pour votre inscription<p><button class="btn-close">Fermer</button>';

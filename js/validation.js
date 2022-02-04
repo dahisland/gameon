@@ -1,23 +1,28 @@
-// This javascript file handles validation form when the user click on the "submit" button
-
 // -------------------------------------------------------------------------- //
 // ---------------- FUNCTIONS FOR VALIDATION INPUTS IN FORM ----------------- //
 // -------------------------------------------------------------------------- //
+// This javascript file handles validation form when the user click on the "submit" button
 
-// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/BIRTHDATE/QUANTITY CONTEST
+// -------------------- DECLARATION FUNCTIONS -------------------- //
+
+//-------------------------------------
+// FUNCTION FOR INPUTS TEXT/EMAIL/NUMBER
+//-------------------------------------
+// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/QUANTITY CONTEST
 // Called on submit
 
 function validateInputs(
   inputReferenceNodelist,
-  lengthValue,
-  lengthValue2,
+  lengthValueMin,
+  lengthValueMax,
   regex,
   errReferenceData,
   textError
 ) {
   if (
-    (inputReferenceNodelist.value.length < lengthValue) |
-    (inputReferenceNodelist.value.length > lengthValue2) |
+    // Conditions to display error message + change font color & border color when input is invalid on submit
+    (inputReferenceNodelist.value.length < lengthValueMin) |
+    (inputReferenceNodelist.value.length > lengthValueMax) |
     !inputReferenceNodelist.value.match(regex)
   ) {
     inputReferenceNodelist.style.border = borderColorError;
@@ -31,26 +36,30 @@ function validateInputs(
     return true;
   }
 }
-// Function for validation input BIRTHDATE
+//-------------------------------------
+// FUNCTION FOR INPUT BIRTHDATE
+//-------------------------------------
+// valid/invalid input by calculating age of user in terms of today's date
+// Age minimum required at the time of registration : 12 years old
 // Called on submit
 
 function validateInputBirthdate() {
-  // valueAsDate collect dat registered on input Birthdate on format equals to Date.now()
-  // This allows to use getFullYear(), getMonth() and getDate() to compare values with today's values
+  // valueAsDate collects date registered on <input> Birthdate on format equals to Date.now()
+  // This allows to use getFullYear(), getMonth() and getDate() to compare values with current date values
   let dataBirthdate = inputBirthdate.valueAsDate;
   if (dataBirthdate == null) {
-    // When user hasn't filled any values yet (valueAsDate is null)
+    // Condition when user hasn't filled any values yet (valueAsDate is null)
     errorDataBirthdate.style.color = fontColorError;
     errorDataBirthdate.textContent = textErrorBirthdate;
     inputBirthdate.style.border = borderColorError;
   } else if (
-    // when user's will have 12 years old on the year
+    // Condition when user have 12 years old in the current year
     (dataBirthdate.getFullYear() === yearToday - 12 &&
       dataBirthdate.getMonth() > monthToday) |
     (dataBirthdate.getFullYear() === yearToday - 12 &&
       dataBirthdate.getMonth() === monthToday &&
       dataBirthdate.getDate() > dayToday) |
-    // When users has 11 year or less and won't have 12 years old on the year
+    // Condition when users has 11 year or less and won't have 12 years old on the current year
     (dataBirthdate.getFullYear() > yearToday - 12) |
     !inputBirthdate.value.match(regexBirthdate)
   ) {
@@ -64,8 +73,12 @@ function validateInputBirthdate() {
   }
 }
 
-// Function for validation input type radio : Choose a LOCALISATION CONTEST
+//-------------------------------------
+// FUNCTION FOR INPUT RADIO
+//-------------------------------------
+// Function for validation <input [type=radio]> : Choose a LOCALISATION CONTEST
 // Called on submit
+
 function validateLocalisation() {
   if (
     location1.checked == false &&
@@ -84,8 +97,13 @@ function validateLocalisation() {
     return true;
   }
 }
+
+//-------------------------------------
+// FUNCTION FOR INPUT CHECKBOX
+//-------------------------------------
 // Function for validation input type checkbox : ACCEPT CONDITIONS
 // Called on submit
+
 function validateConditions() {
   if (checkbox1.checked == false) {
     errorDataConditions.style.color = fontColorError;
@@ -98,12 +116,12 @@ function validateConditions() {
   }
 }
 
-// -------------------------------------------------------------------------- //
-// ----------------- FUNCTION VALIDATION FORM ON SUBMIT -------------------- //
-// -------------------------------------------------------------------------- //
+//-------------------------------------
+// FUNCTION VALIDATION ON SUBMIT
+//-------------------------------------
 
 function validate(event) {
-  event.preventDefault(); // Prevent default reloading page after submit
+  event.preventDefault(); // Prevent default reloading page on submit
   // Call function for Input FIRST NAME
   validateInputs(
     inputFirstName,
@@ -216,9 +234,10 @@ function validate(event) {
     form.style.display = "none";
     // Form is valid => a "message thanks" is displayed
     textThanks.style.display = "block";
-    textThanks.innerHTML = messageThanks; // Form is valid => a close button is displayed to close modal
+    textThanks.innerHTML = messageThanks;
+    // Form is valid => a close button is displayed to close modal
     const buttonClose = document.querySelectorAll(".btn-close");
-    // Call function Close modal on click
+    // Th close button calls function closeModal on click
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
         closeModal();
