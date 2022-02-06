@@ -4,7 +4,7 @@ GameOn est une PME spécialisée dans les conférences et l'organisation de conc
 
 A partir des maquettes et des fichiers de mise-en-pages fournis,
 ce projet vise à corriger en javascript les "issues" rencontrées sur la modale du formulaire.
-Des corrections sur la mise en page HTML/CSS ont négalement été effectuées afin de fournir un rendu du projet conforme aux conditions énumérées.
+Des corrections sur la mise en page HTML/CSS ont également été effectuées afin de fournir un rendu du projet conforme aux conditions énumérées.
 
 # Consignes de base
 
@@ -43,12 +43,12 @@ Exemples :
 
    - Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
      Les données doivent être saisies correctement :
-   - (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
-   - (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
-   - (3) L'adresse électronique est valide.
-   - (4) Pour le nombre de concours, une valeur numérique est saisie.
-   - (5) Un bouton radio est sélectionné.
-   - (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
+     - (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
+     - (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
+     - (3) L'adresse électronique est valide.
+     - (4) Pour le nombre de concours, une valeur numérique est saisie.
+     - (5) Un bouton radio est sélectionné.
+     - (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
    - Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
 
 ## Fermer la modale
