@@ -1,15 +1,14 @@
-// -------------------------------------------------------------------------- //
-// ---------------- FUNCTIONS FOR VALIDATION INPUTS IN FORM ----------------- //
-// -------------------------------------------------------------------------- //
-// This javascript file handles validation form when the user click on the "submit" button
+// --------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------- VALIDATION INPUTS IN FORM ON EVENT SUBMIT ---------------------------------- //
+// --------------------------------------------------------------------------------------------------------------- //
+// ----------- This javascript file handles validation form when the user click on the "submit" button ----------- //
 
-// -------------------- DECLARATION FUNCTIONS -------------------- //
+// -------------------------------------------- DECLARATION FUNCTIONS -------------------------------------------- //
 
-//-------------------------------------
-// FUNCTION FOR INPUTS TEXT/EMAIL/NUMBER
-//-------------------------------------
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUTS TEXT/EMAIL/NUMBER (for event submit)
+//---------------------------------------------------------------------------
 // Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/QUANTITY CONTEST
-// Called on submit
 
 function validateInputs(
   inputReferenceNodelist,
@@ -36,17 +35,17 @@ function validateInputs(
     return true;
   }
 }
-//-------------------------------------
-// FUNCTION FOR INPUT BIRTHDATE
-//-------------------------------------
-// valid/invalid input by calculating age of user in terms of today's date
-// Age minimum required at the time of registration : 12 years old
-// Called on submit
 
-function validateInputBirthdate() {
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUT BIRTHDATE (for event submit)
+//---------------------------------------------------------------------------
+// Valid/invalid input by calculating age of user in terms of current date
+// Age minimum required at the time of registration : 12 years old
+
+function validateInputBirthdate(e) {
   // valueAsDate collects date registered on <input> Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with current date values
-  let dataBirthdate = inputBirthdate.valueAsDate;
+  let dataBirthdate = e.target.valueAsDate;
   if (dataBirthdate == null) {
     // Condition when user hasn't filled any values yet (valueAsDate is null)
     errorDataBirthdate.style.color = fontColorError;
@@ -73,11 +72,10 @@ function validateInputBirthdate() {
   }
 }
 
-//-------------------------------------
-// FUNCTION FOR INPUT RADIO
-//-------------------------------------
-// Function for validation <input [type=radio]> : Choose a LOCALISATION CONTEST
-// Called on submit
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUT RADIO (for event submit)
+//---------------------------------------------------------------------------
+// Function for validation input[type=radio] : Choose a LOCALISATION CONTEST
 
 function validateLocalisation() {
   if (
@@ -98,11 +96,10 @@ function validateLocalisation() {
   }
 }
 
-//-------------------------------------
-// FUNCTION FOR INPUT CHECKBOX
-//-------------------------------------
-// Function for validation input type checkbox : ACCEPT CONDITIONS
-// Called on submit
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUT CHECKBOX (for event submit)
+//---------------------------------------------------------------------------
+// Function for validation input [type=checkbox] : ACCEPT CONDITIONS
 
 function validateConditions() {
   if (checkbox1.checked == false) {
@@ -116,11 +113,9 @@ function validateConditions() {
   }
 }
 
-//-------------------------------------
-// FUNCTION VALIDATION ON SUBMIT
-//-------------------------------------
+//---------------------------------------- CALL FUNCTIONS ON EVENT SUBMIT ---------------------------------------- //
 
-function validate(event) {
+form.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent default reloading page on submit
   // Call function for Input FIRST NAME
   validateInputs(
@@ -245,4 +240,4 @@ function validate(event) {
     );
     return true;
   }
-}
+});
