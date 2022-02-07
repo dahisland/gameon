@@ -42,11 +42,11 @@ function validateInputs(
 // Valid/invalid input by calculating age of user in terms of current date
 // Age minimum required at the time of registration : 12 years old
 
-function validateInputBirthdate(e) {
+function validateInputBirthdate() {
   // valueAsDate collects date registered on <input> Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with current date values
-  let dataBirthdate = e.target.valueAsDate;
-  if (dataBirthdate == null) {
+  let dataBirthdate = inputBirthdate.valueAsDate;
+  if (dataBirthdate === null) {
     // Condition when user hasn't filled any values yet (valueAsDate is null)
     errorDataBirthdate.style.color = fontColorError;
     errorDataBirthdate.textContent = textErrorBirthdate;
@@ -138,7 +138,7 @@ form.addEventListener("submit", (event) => {
   // Call function for Input EMAIL
   validateInputs(inputEmail, 6, 40, regexEmail, errorDataEmail, textErrorEmail);
   // Call function for Input BIRTHDATE
-  validateInputBirthdate(event);
+  validateInputBirthdate();
   // Call function for Input QUANTITY CONTEST
   validateInputs(
     inputQuantityContest,
