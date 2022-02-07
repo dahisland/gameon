@@ -19,16 +19,15 @@ import {
 // -------------------- This javascript part calls functions to interact with HTML/CSS layout -------------------- //
 
 // ---------------------------------------------- RESPONSIVE TOPNAV ---------------------------------------------- //
-// ----------------------------- Function to add a class for responsive design topnav ---------------------------- //
+// ------------------------------- Event to add a class for responsive design topnav ----------------------------- //
 
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+variable.navIcon.addEventListener("click", () => {
+  if (variable.topNav.className === "topnav") {
+    variable.topNav.className += " responsive";
   } else {
-    x.className = "topnav";
+    variable.topNav.className = "topnav";
   }
-}
+});
 
 // --------------------------------------- FORM-DATA CONDITIONS/NEWSLETTER --------------------------------------- //
 // -------------- Event to add a class for Nodelist formData containing "conditions d'utilisations" -------------- //

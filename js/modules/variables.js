@@ -15,7 +15,8 @@ const modalBody = document.querySelector(".modal-body"); // Const for container 
 const errorData = document.querySelectorAll(".error-data"); // Const for the text-errors's containers on validation form
 const textThanks = document.querySelector(".text-thanks"); // Const for container <div> with "message thanks" after a validation form succeed
 const input = document.querySelectorAll("input"); // Const for all <input> elements
-
+const navIcon = document.querySelector(".icon");
+const topNav = document.getElementById("myTopnav");
 // ---------------------------------------------------- INPUTS --------------------------------------------------- //
 // -------------------------- Variables for each element contained in the Nodelist INPUT ------------------------- //
 
@@ -141,4 +142,6 @@ export {
   regexEmail,
   regexBirthdate,
   regexQuantityContest,
+  navIcon,
+  topNav,
 };
