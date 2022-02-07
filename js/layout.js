@@ -6,15 +6,13 @@
 // ---------------------------------------------- RESPONSIVE TOPNAV ---------------------------------------------- //
 // ----------------------------- Function to add a class for responsive design topnav ---------------------------- //
 
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+navIcon.addEventListener("click", () => {
+  if (topNav.className === "topnav") {
+    topNav.className += " responsive";
   } else {
-    x.className = "topnav";
+    topNav.className = "topnav";
   }
-}
-
+});
 // --------------------------------------- FORM-DATA CONDITIONS/NEWSLETTER --------------------------------------- //
 // -------------- Event to add a class for Nodelist formData containing "conditions d'utilisations" -------------- //
 
