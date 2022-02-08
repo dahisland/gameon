@@ -318,10 +318,7 @@ variable.form.addEventListener("submit", (event) => {
       variable.regexNames,
       variable.errorDataFirstName,
       variable.textErrorNames
-    )
-  ) {
-    return false;
-  } else if (
+    ) |
     // If function for Input LAST NAME return false
     !validateInputs(
       variable.inputLastName,
@@ -330,10 +327,7 @@ variable.form.addEventListener("submit", (event) => {
       variable.regexNames,
       variable.errorDataLastName,
       variable.textErrorNames
-    )
-  ) {
-    return false;
-  } else if (
+    ) |
     // If function for Input EMAIL return false
     !validateInputs(
       variable.inputEmail,
@@ -342,27 +336,9 @@ variable.form.addEventListener("submit", (event) => {
       variable.regexEmail,
       variable.errorDataEmail,
       variable.textErrorEmail
-    )
-  ) {
-    return false;
-  } else if (
+    ) |
     // If function for Input BIRTHDATE return false
-    !validateInputs(
-      variable.inputBirthdate,
-      8,
-      12,
-      variable.regexBirthdate,
-      variable.errorDataBirthdate,
-      variable.textErrorBirthdate
-    )
-  ) {
-    return false;
-  } else if (
-    // If function for Input ACCEPT CONDITIONS return false
-    !validateInputBirthdate()
-  ) {
-    return false;
-  } else if (
+    !validateInputBirthdate() |
     // If function for Input QUANTITY CONTEST return false
     !validateInputs(
       variable.inputQuantityContest,
@@ -371,16 +347,10 @@ variable.form.addEventListener("submit", (event) => {
       variable.regexQuantityContest,
       variable.errorDataQuantityContest,
       variable.textErrorQuantity
-    )
-  ) {
-    return false;
-  } else if (
-    // If function for Input LOCALISATION CONTEST return false
-    !validateLocalisation()
-  ) {
-    return false;
-  } else if (
-    // If function for Input ACCEPT CONDITIONS return false
+    ) |
+    // If function for Input LOCALISATION return false
+    !validateLocalisation() |
+    // If function for Input CONDITIONS return false
     !validateConditions()
   ) {
     return false;
