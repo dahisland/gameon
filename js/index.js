@@ -358,6 +358,11 @@ variable.form.addEventListener("submit", (event) => {
   ) {
     return false;
   } else if (
+    // If function for Input ACCEPT CONDITIONS return false
+    !validateInputBirthdate()
+  ) {
+    return false;
+  } else if (
     // If function for Input QUANTITY CONTEST return false
     !validateInputs(
       variable.inputQuantityContest,

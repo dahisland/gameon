@@ -53,6 +53,7 @@ function validateInputBirthdate() {
     variable.errorDataBirthdate.style.color = variable.fontColorError;
     variable.errorDataBirthdate.textContent = variable.textErrorBirthdate;
     variable.inputBirthdate.style.border = variable.borderColorError;
+    return false;
   } else if (
     // Condition when user have 12 years old in the current year
     (dateBirthdate.getFullYear() === variable.yearToday - 12 &&
@@ -67,10 +68,12 @@ function validateInputBirthdate() {
     variable.errorDataBirthdate.style.color = variable.fontColorError;
     variable.errorDataBirthdate.textContent = variable.textErrorBirthdate;
     variable.inputBirthdate.style.border = variable.borderColorError;
+    return false;
   } else {
     variable.errorDataBirthdate.style.color = variable.fontColorValid;
     variable.errorDataBirthdate.innerHTML = variable.iconValid;
     variable.inputBirthdate.style.border = variable.borderColorInitial;
+    return true;
   }
 }
 
