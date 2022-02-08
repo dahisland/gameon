@@ -26,10 +26,11 @@ function eventInputs(
     e.preventDefault();
     if (
       // Conditions to supprim whitespaces for input EMAIL & QUANTITY CONTEST
-      (inputReferenceNodelist == variable.inputEmail) |
-      (inputReferenceNodelist == variable.inputQuantityContest)
+      (inputReferenceNodelist === variable.inputEmail) |
+      (inputReferenceNodelist === variable.inputQuantityContest)
     ) {
       e.target.value = e.target.value.replace(/\s/g, "");
+      e.target.value = e.target.value.replace(/^[\s]/, "");
     } else if (
       // Conditions to limit whitspaces & "-" to 1 for inputs FIRST NAME & LASTNAME
       (inputReferenceNodelist == variable.inputFirstName) |
