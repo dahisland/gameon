@@ -19,8 +19,13 @@ function eventInputNames(
   styleBorderElse
 ) {
   inputRefNodelist.addEventListener(eventInput, () => {
-    inputRefNodelist.value = inputRefNodelist.value.replace(/[\s]{2,}/g, " ");
+    // Replace successive special characters by single special character
     inputRefNodelist.value = inputRefNodelist.value.replace(/[\-]{2,}/g, "-");
+    inputRefNodelist.value = inputRefNodelist.value.replace(/[\']{2,}/g, "'");
+    inputRefNodelist.value = inputRefNodelist.value.replace(/[\.]{2,}/g, ".");
+    inputRefNodelist.value = inputRefNodelist.value.replace(/[\-]{2,}/g, "-");
+    // Replace successive whitespaces by single whitespace & refuse whitespace in first character
+    inputRefNodelist.value = inputRefNodelist.value.replace(/[\s]{2,}/g, " ");
     inputRefNodelist.value = inputRefNodelist.value.replace(/^[\s]/, "");
     valid.validateInputNames(inputRefNodelist, errRefData, styleBorderElse);
   });
