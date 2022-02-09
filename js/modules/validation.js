@@ -1,39 +1,52 @@
-import * as variable from "./variables.js";
+import * as vars from "./variables.js";
 
 // --------------------------------------------------------------------------------------------------------------- //
-// ---------------------------------- VALIDATION INPUTS IN FORM ON EVENT SUBMIT ---------------------------------- //
+// ----------------------------------------- VALIDATION INPUTS FOR EVENTS ---------------------------------------- //
 // --------------------------------------------------------------------------------------------------------------- //
-// ----------- This javascript file handles validation form when the user click on the "submit" button ----------- //
+// ----------- This javascript file handles validation inputs for events input/focusin/focusout/submit ----------- //
 
 // -------------------------------------------- DECLARATION FUNCTIONS -------------------------------------------- //
 
 //---------------------------------------------------------------------------
-// FUNCTION FOR INPUTS TEXT/EMAIL/NUMBER (for event submit)
+// FUNCTION FOR INPUT FIRSTNAME/LASTNAME (for events )
 //---------------------------------------------------------------------------
-// Function for validation inputs FIRSTNAME/LASTNAME/EMAIL/QUANTITY CONTEST
-
-function validateInputs(
-  inputReferenceNodelist,
-  lengthValueMin,
-  lengthValueMax,
-  regex,
-  errReferenceData,
-  textError
-) {
+function validateInputNames(inputRefNodelist, errRefData, colorBorder) {
   if (
     // Conditions to display error message + change font color & border color when input is invalid on submit
-    (inputReferenceNodelist.value.length < lengthValueMin) |
-    (inputReferenceNodelist.value.length > lengthValueMax) |
-    !inputReferenceNodelist.value.match(regex)
+    (inputRefNodelist.value.length < 2) |
+    (inputRefNodelist.value.length > 30) |
+    !inputRefNodelist.value.match(vars.regexNames)
   ) {
-    inputReferenceNodelist.style.border = variable.borderColorError;
-    errReferenceData.style.color = variable.fontColorError;
-    errReferenceData.textContent = textError;
+    inputRefNodelist.style.border = vars.borderColorError;
+    errRefData.style.color = vars.fontColorError;
+    errRefData.textContent = vars.textErrorNames;
     return false;
   } else {
-    errReferenceData.style.color = variable.fontColorValid;
-    errReferenceData.innerHTML = variable.iconValid;
-    inputReferenceNodelist.style.border = variable.borderColorInitial;
+    errRefData.style.color = vars.fontColorValid;
+    errRefData.innerHTML = vars.iconValid;
+    inputRefNodelist.style.border = colorBorder;
+    return true;
+  }
+}
+
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUT EMAIL (for events )
+//---------------------------------------------------------------------------
+function validateInputEmail(colorBorder) {
+  if (
+    // Conditions to display error message + change font color & border color when input is invalid on submit
+    (vars.inputEmail.value.length < 6) |
+    (vars.inputEmail.value.length > 40) |
+    !vars.inputEmail.value.match(vars.regexEmail)
+  ) {
+    vars.inputEmail.style.border = vars.borderColorError;
+    vars.errorDataEmail.style.color = vars.fontColorError;
+    vars.errorDataEmail.textContent = vars.textErrorEmail;
+    return false;
+  } else {
+    vars.errorDataEmail.style.color = vars.fontColorValid;
+    vars.errorDataEmail.innerHTML = vars.iconValid;
+    vars.inputEmail.style.border = colorBorder;
     return true;
   }
 }
@@ -44,35 +57,57 @@ function validateInputs(
 // Valid/invalid input by calculating age of user in terms of current date
 // Age minimum required at the time of registration : 12 years old
 
-function validateInputBirthdate() {
+function validateInputBirthdate(colorBorder) {
   // valueAsDate collects date registered on <input> Birthdate on format equals to Date.now()
   // This allows to use getFullYear(), getMonth() and getDate() to compare values with current date values
-  let dateBirthdate = variable.inputBirthdate.valueAsDate;
+  let dateBirthdate = vars.inputBirthdate.valueAsDate;
   if (dateBirthdate === null) {
     // Condition when user hasn't filled any values yet (valueAsDate is null)
-    variable.errorDataBirthdate.style.color = variable.fontColorError;
-    variable.errorDataBirthdate.textContent = variable.textErrorBirthdate;
-    variable.inputBirthdate.style.border = variable.borderColorError;
+    vars.errorDataBirthdate.style.color = vars.fontColorError;
+    vars.errorDataBirthdate.textContent = vars.textErrorBirthdate;
+    vars.inputBirthdate.style.border = vars.borderColorError;
     return false;
   } else if (
     // Condition when user have 12 years old in the current year
-    (dateBirthdate.getFullYear() === variable.yearToday - 12 &&
-      dateBirthdate.getMonth() > variable.monthToday) |
-    (dateBirthdate.getFullYear() === variable.yearToday - 12 &&
-      dateBirthdate.getMonth() === variable.monthToday &&
-      dateBirthdate.getDate() > variable.dayToday) |
+    (dateBirthdate.getFullYear() === vars.yearToday - 12 &&
+      dateBirthdate.getMonth() > vars.monthToday) |
+    (dateBirthdate.getFullYear() === vars.yearToday - 12 &&
+      dateBirthdate.getMonth() === vars.monthToday &&
+      dateBirthdate.getDate() > vars.dayToday) |
     // Condition when users has 11 year or less and won't have 12 years old on the current year
-    (dateBirthdate.getFullYear() > variable.yearToday - 12) |
-    !variable.inputBirthdate.value.match(variable.regexBirthdate)
+    (dateBirthdate.getFullYear() > vars.yearToday - 12) |
+    !vars.inputBirthdate.value.match(vars.regexBirthdate)
   ) {
-    variable.errorDataBirthdate.style.color = variable.fontColorError;
-    variable.errorDataBirthdate.textContent = variable.textErrorBirthdate;
-    variable.inputBirthdate.style.border = variable.borderColorError;
+    vars.errorDataBirthdate.style.color = vars.fontColorError;
+    vars.errorDataBirthdate.textContent = vars.textErrorBirthdate;
+    vars.inputBirthdate.style.border = vars.borderColorError;
     return false;
   } else {
-    variable.errorDataBirthdate.style.color = variable.fontColorValid;
-    variable.errorDataBirthdate.innerHTML = variable.iconValid;
-    variable.inputBirthdate.style.border = variable.borderColorInitial;
+    vars.errorDataBirthdate.style.color = vars.fontColorValid;
+    vars.errorDataBirthdate.innerHTML = vars.iconValid;
+    vars.inputBirthdate.style.border = colorBorder;
+    return true;
+  }
+}
+
+//---------------------------------------------------------------------------
+// FUNCTION FOR INPUT NUMBERS (for events )
+//---------------------------------------------------------------------------
+function validateInputQuantity(colorBorder) {
+  if (
+    // Conditions to display error message + change font & border color when input is invalid
+    (vars.inputNumbers.value.length < 1) |
+    (vars.inputNumbers.value.length > 2) |
+    !vars.inputNumbers.value.match(vars.regexNumbers)
+  ) {
+    vars.inputNumbers.style.border = vars.borderColorError;
+    vars.errorDataNumbers.style.color = vars.fontColorError;
+    vars.errorDataNumbers.textContent = vars.textErrorNumbers;
+    return false;
+  } else {
+    vars.errorDataNumbers.style.color = vars.fontColorValid;
+    vars.errorDataNumbers.innerHTML = vars.iconValid;
+    vars.inputNumbers.style.border = colorBorder;
     return true;
   }
 }
@@ -82,7 +117,7 @@ function validateInputBirthdate() {
 //---------------------------------------------------------------------------
 // Function for validation input[type=radio] : Choose a LOCALISATION CONTEST
 
-function validateLocalisation() {
+function validateLocalise() {
   if (
     location1.checked == false &&
     location2.checked == false &&
@@ -91,12 +126,12 @@ function validateLocalisation() {
     location5.checked == false &&
     location6.checked == false
   ) {
-    variable.errorDataLocalisation.style.color = variable.fontColorError;
-    variable.errorDataLocalisation.textContent = variable.textErrorLocalisation;
+    vars.errorDataLocalise.style.color = vars.fontColorError;
+    vars.errorDataLocalise.textContent = vars.textErrorLocalise;
     return false;
   } else {
-    variable.errorDataLocalisation.style.color = variable.fontColorValid;
-    variable.errorDataLocalisation.innerHTML = variable.iconValid;
+    vars.errorDataLocalise.style.color = vars.fontColorValid;
+    vars.errorDataLocalise.innerHTML = vars.iconValid;
     return true;
   }
 }
@@ -108,19 +143,21 @@ function validateLocalisation() {
 
 function validateConditions() {
   if (checkbox1.checked == false) {
-    variable.errorDataConditions.style.color = variable.fontColorError;
-    variable.errorDataConditions.textContent = variable.textErrorConditions;
+    vars.errorDataConditions.style.color = vars.fontColorError;
+    vars.errorDataConditions.textContent = vars.textErrorConditions;
     return false;
   } else {
-    variable.errorDataConditions.style.color = variable.fontColorValid;
-    variable.errorDataConditions.innerHTML = variable.iconValid;
+    vars.errorDataConditions.style.color = vars.fontColorValid;
+    vars.errorDataConditions.innerHTML = vars.iconValid;
     return true;
   }
 }
 
 export {
-  validateInputs,
+  validateInputNames,
+  validateInputEmail,
   validateInputBirthdate,
-  validateLocalisation,
+  validateInputQuantity,
+  validateLocalise,
   validateConditions,
 };

@@ -24,7 +24,7 @@ const inputFirstName = input[0];
 const inputLastName = input[1];
 const inputEmail = input[2];
 const inputBirthdate = input[3];
-const inputQuantityContest = input[4];
+const inputNumbers = input[4];
 const inputRadio = document.getElementsByName("location");
 
 // -------------------------------------------------- ERROR-DATA ------------------------------------------------- //
@@ -34,8 +34,8 @@ const errorDataFirstName = errorData[0];
 const errorDataLastName = errorData[1];
 const errorDataEmail = errorData[2];
 const errorDataBirthdate = errorData[3];
-const errorDataQuantityContest = errorData[4];
-const errorDataLocalisation = errorData[5];
+const errorDataNumbers = errorData[4];
+const errorDataLocalise = errorData[5];
 const errorDataConditions = errorData[6];
 
 // ---------------------------------------------------- TOPNAV --------------------------------------------------- //
@@ -55,8 +55,8 @@ let textErrorEmail =
   "* Veuillez entrer une adresse mail valide (max 40 caractères)";
 let textErrorBirthdate =
   "* Vous devez avoir au moins 12 ans au moment de l'inscription";
-let textErrorQuantity = "* Veuillez entrer un nombre entre 0 et 99";
-let textErrorLocalisation = "* Veuillez cocher une localisation";
+let textErrorNumbers = "* Veuillez entrer un nombre entre 0 et 99";
+let textErrorLocalise = "* Veuillez cocher une localisation";
 let textErrorConditions = "* Veuillez accepter les conditions d'utilisation";
 
 // -------------------------------------------------- STYLE CSS -------------------------------------------------- //
@@ -92,7 +92,7 @@ const regexEmail =
   /^([\S\w/./_/\\/!/#/$/%/&/£/'/\]/[//*/+/=/?/^/`/{/|/}/~/"/(/)/,/:/;/</>/@/-]{1,}[\@][a-zA-Z]{1,}[\.][a-zA-Z]{2,})$/;
 const regexBirthdate =
   /^(19[0-9][0-9]|20[0-1][0-9])\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$/;
-const regexQuantityContest = /^([0-9]|[0-9][0-9])$/;
+const regexNumbers = /^([0-9]|[0-9][0-9])$/;
 
 export {
   modalbg,
@@ -109,14 +109,14 @@ export {
   inputLastName,
   inputEmail,
   inputBirthdate,
-  inputQuantityContest,
+  inputNumbers,
   inputRadio,
   errorDataFirstName,
   errorDataLastName,
   errorDataEmail,
   errorDataBirthdate,
-  errorDataQuantityContest,
-  errorDataLocalisation,
+  errorDataNumbers,
+  errorDataLocalise,
   errorDataConditions,
   spanDetails,
   spanPropos,
@@ -125,8 +125,8 @@ export {
   textErrorNames,
   textErrorEmail,
   textErrorBirthdate,
-  textErrorQuantity,
-  textErrorLocalisation,
+  textErrorNumbers,
+  textErrorLocalise,
   textErrorConditions,
   fontColorValid,
   fontColorError,
@@ -142,7 +142,7 @@ export {
   regexNames,
   regexEmail,
   regexBirthdate,
-  regexQuantityContest,
+  regexNumbers,
   navIcon,
   topNav,
 };

@@ -1,4 +1,4 @@
-import * as variable from "./variables.js";
+import * as vars from "./variables.js";
 
 // --------------------------------------------------------------------------------------------------------------- //
 // ---------------------------------------------------- LAYOUT --------------------------------------------------- //
@@ -25,37 +25,37 @@ function navbar(spanActive, spanInactive1, spanInactive2, spanInactive3) {
 
 // Declaration function
 function launchModal() {
-  variable.modalbg.style.display = "block";
+  vars.modalbg.style.display = "block";
   // function used to reset form if a precedent form has been submitted
   function resetForm() {
-    variable.form.reset();
+    vars.form.reset();
   }
   // Call function reset (reset the form content)
   resetForm();
   // Reset messages error
-  variable.errorDataFirstName.textContent = "";
-  variable.errorDataLastName.textContent = "";
-  variable.errorDataEmail.textContent = "";
-  variable.errorDataBirthdate.textContent = "";
-  variable.errorDataQuantityContest.textContent = "";
-  variable.errorDataLocalisation.textContent = "";
-  variable.errorDataConditions.textContent = "";
+  vars.errorDataFirstName.textContent = "";
+  vars.errorDataLastName.textContent = "";
+  vars.errorDataEmail.textContent = "";
+  vars.errorDataBirthdate.textContent = "";
+  vars.errorDataNumbers.textContent = "";
+  vars.errorDataLocalise.textContent = "";
+  vars.errorDataConditions.textContent = "";
   // Change inputs borders red or green to default borders
-  variable.inputFirstName.style.border = "0.8px solid #ccc";
-  variable.inputLastName.style.border = "0.8px solid #ccc";
-  variable.inputEmail.style.border = "0.8px solid #ccc";
-  variable.inputBirthdate.style.border = "0.8px solid #ccc";
-  variable.inputQuantityContest.style.border = "0.8px solid #ccc";
+  vars.inputFirstName.style.border = "0.8px solid #ccc";
+  vars.inputLastName.style.border = "0.8px solid #ccc";
+  vars.inputEmail.style.border = "0.8px solid #ccc";
+  vars.inputBirthdate.style.border = "0.8px solid #ccc";
+  vars.inputNumbers.style.border = "0.8px solid #ccc";
   // Style used to display form & hide the "thanks" message if a precedent form has been submitted
-  variable.form.style.display = "block";
-  variable.textThanks.style.display = "none";
+  vars.form.style.display = "block";
+  vars.textThanks.style.display = "none";
 }
 // -------------------------------------------------- CLOSE MODAL ------------------------------------------------ //
 // Function called to close modal by clicking on <span class="close">
 
 // Declaration function
 function closeModal() {
-  variable.modalbg.style.display = "none";
+  vars.modalbg.style.display = "none";
 }
 
 export { navbar, launchModal, closeModal };
