@@ -127,11 +127,11 @@ events.eventInputBirthdate("focusout", vars.borderColorInitial);
 //---------------------------------------------------------------------------
 // INPUT NUMBER FOCUSING
 //---------------------------------------------------------------------------
-// Launch function for QUANTITY CONTEST on event "INPUT"
+// Launch function for NUMBERS on event "INPUT"
 events.eventInputQuantity(vars.inputNumbers, "input", vars.borderColorValid);
-// Launch function for QUANTITY CONTEST on event "FOCUSIN"
+// Launch function for NUMBERS on event "FOCUSIN"
 events.eventInputQuantity(vars.inputNumbers, "focusin", vars.borderColorValid);
-// Launch function for QUANTITY CONTEST on event "FOCUSOUT"
+// Launch function for NUMBERS on event "FOCUSOUT"
 events.eventInputQuantity(
   vars.inputNumbers,
   "focusout",
@@ -156,7 +156,8 @@ events.eventInputConditions();
 //---------------------------------------- CALL FUNCTIONS ON EVENT SUBMIT ---------------------------------------- //
 
 vars.form.addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevent default reloading page on submit
+  // Prevent default reloading page on submit
+  event.preventDefault();
   // Call function for Input FIRST NAME
   valid.validateInputNames(
     vars.inputFirstName,
@@ -173,14 +174,14 @@ vars.form.addEventListener("submit", (event) => {
   valid.validateInputEmail(vars.borderColorInitial);
   // Call function for Input BIRTHDATE
   valid.validateInputBirthdate(vars.borderColorInitial);
-  // Call function for Input QUANTITY CONTEST
+  // Call function for Input NUMBERS
   valid.validateInputQuantity(vars.borderColorInitial);
   // Call function for Input LOCALISATION CONTEST
   valid.validateLocalise();
   // Call function for Input ACCEPT CONDITIONS
   valid.validateConditions();
 
-  // CONDITIONS FOR SUBMIT ( All functions Inputs must return true)
+  // CONDITIONS FOR SUBMIT (All functions Inputs have to return true)
   if (
     // If function for Input FIRST NAME return false
     !valid.validateInputNames(
@@ -198,7 +199,7 @@ vars.form.addEventListener("submit", (event) => {
     !valid.validateInputEmail(vars.borderColorInitial) |
     // If function for Input BIRTHDATE return false
     !valid.validateInputBirthdate(vars.borderColorInitial) |
-    // If function for Input QUANTITY CONTEST return false
+    // If function for Input NUMBERS return false
     !valid.validateInputQuantity(vars.borderColorInitial) |
     // If function for Input LOCALISATION return false
     !valid.validateLocalise() |
@@ -214,7 +215,7 @@ vars.form.addEventListener("submit", (event) => {
     vars.textThanks.innerHTML = vars.messageThanks;
     // Form is valid => a close button is displayed to close modal
     const buttonClose = document.querySelectorAll(".btn-close");
-    // Th close button calls function closeModal on click
+    // The close button calls function closeModal on click
     buttonClose.forEach((btnClose) =>
       btnClose.addEventListener("click", () => {
         closeModal();
