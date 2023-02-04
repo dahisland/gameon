@@ -1,3 +1,13 @@
+[![forthebadge](./readme-assets/html5-badge.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+<br/>
+
+<div id="header" align="left">
+  <img src="./img/Logo.png" width="200"/>
+</div>
+
 # Projet GameOn
 
 GameOn est une PME spécialisée dans les conférences et l'organisation de concours de jeux.
