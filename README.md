@@ -8,59 +8,60 @@
   <img src="./img/Logo.png" width="200"/>
 </div>
 
-# Projet GameOn
+# Project GameOn
 
-GameOn est une PME spécialisée dans les conférences et l'organisation de concours de jeux.
+GameOn is an small entreprise specialized in conferences and organization of game competitions.
 
-A partir des maquettes et des fichiers de mise-en-pages fournis,
-ce projet vise à corriger en javascript les "issues" rencontrées sur la modale du formulaire.
-Des corrections sur la mise en page HTML/CSS ont également été effectuées afin de fournir un rendu du projet conforme aux conditions énumérées.
+From the models and layout files provided, this project aims to correct in javascript the "issues" encountered on the modal of the form.
+Corrections to the HTML/CSS layout have also been made in order to provide a rendering project that complies with the conditions listed.
 
-# Consignes de base
+# Basic instructions :
 
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+1. Fork this repository ;
+2. It is advised to use VisualStudio Code and you can use Docker, but it is not required ;
+3. There is no dependencies ;
+4. You must only use custom CSS and pure JavaScript, no jQuery, Bootstrap or other library ;
 
 # Issues
 
-## Tests manuels
+## Manual tests
 
-1. Visualiser et tester l'interface utilisateur dans les dernières versions de Chrome et de Firefox, ainsi que dans les versions mobile et desktop. Corriger les erreurs d'affichage existantes.
+1. Visualize and test the user interface in the latest versions of Chrome and Firefox, as well as mobile and desktop versions. Fix existing display errors.
 
-2. Tester toutes les fonctionnalités des boutons et des entrées de formulaire (tester les valeurs correctes et incorrectes)
+2. Test all functionality of buttons and form inputs (test correct and incorrect values)
 
-## Ajouter confirmation quand envoie réussi
+## Add confirmation when send successful
 
-1. Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
+1. After successful submission, include a successful submission confirmation message for the user (ex. "Thank you! Your reservation has been received.")
 
-## Ajouter validation ou messages d'erreur
+## Add validation or error messages
 
-1. Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé.
+1. Specific error messages should appear under the entry that is not correct. Error messages should appear below the associated input field.
 
-Exemples :
+Examples :
 
-    - "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    - "Vous devez choisir une option."
-    - "Vous devez vérifier que vous acceptez les termes et conditions."
-    - "Vous devez entrer votre date de naissance."
+    - "Please enter 2 or more characters for the name field."
+    - "You must choose an option."
+    - "You must accept the terms and conditions."
+    - "You must complete your date of birth."
 
-## Implémenter entrées du formulaire
+## Implement form inputs
 
-1. Lier les labels aux entrées dans le HTML en utilisant les attributs "for" et "id" dans le code existant. Corriger le code HTML quand nécessaire.
-2. Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
+1. Link labels to entries in HTML using "for" and "id" attributes in existing code. Correct the HTML code when necessary.
 
-   - Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
-     Les données doivent être saisies correctement :
-     - (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
-     - (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
-     - (3) L'adresse électronique est valide.
-     - (4) Pour le nombre de concours, une valeur numérique est saisie.
-     - (5) Un bouton radio est sélectionné.
-     - (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
-   - Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
+2. Use pure JavaScript (no jQuery) to complete the form :
 
-## Fermer la modale
+   -The form must be valid when the user clicks on "Submit" :
+   The data must be entered correctly :
 
-1. Ajouter la fonctionnalité au bouton (x)
+   - (1) The Firstname field has a minimum of 2 characters / is not empty.
+   - (2) The Lastname field has a minimum of 2 characters / is not empty.
+   - (3) Email addres must be valid.
+   - (4) For the number of competitions, a numerical value is entered.
+   - (5) A radio button is selected.
+   - (6) Terms and conditions box is checked, other box is optional / can be left unchecked.
+   - Keep form data (don't clear form) when it doesn't pass validation.
+
+## Close modale
+
+1. Add functionality to button (x)
